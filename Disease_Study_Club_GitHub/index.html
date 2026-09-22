@@ -1,0 +1,3417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disease Study Club | v4.2 Club Palette</title>
+
+<style>
+:root{
+  --bg:#fbfaf6;
+  --card:#ffffff;
+  --text:#12383a;
+  --muted:#667b7b;
+  --primary:#f0c84b;
+  --primary-dark:#c89b18;
+  --green:#5f8f70;
+  --green-dark:#1d5b2a;
+  --coral:#f08078;
+  --yellow:#efc94d;
+  --lavender:#9188b8;
+  --accent:#f7f0d9;
+  --border:#e9e5dc;
+  --success:#4d8a68;
+  --warning:#d79f25;
+  --danger:#d96e68;
+  --shadow:0 10px 30px rgba(48,60,50,.07);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+header{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  background:#faf7ef;
+  color:var(--text);
+  padding:28px 20px 30px;
+  text-align:center;
+  border-bottom:1px solid #eee8dc;
+}
+
+header::before,
+header::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  border-radius:48% 52% 55% 45%;
+  filter:saturate(.92);
+}
+
+header::before{
+  width:390px;
+  height:250px;
+  left:-115px;
+  bottom:-105px;
+  background:#73977d;
+  transform:rotate(18deg);
+}
+
+header::after{
+  width:330px;
+  height:235px;
+  right:-95px;
+  top:-125px;
+  background:#edc955;
+  transform:rotate(-10deg);
+}
+
+.club-logo{
+  width:145px;
+  height:145px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 6px;
+  position:relative;
+  z-index:2;
+}
+
+header h1{
+  margin:0;
+  font-size:clamp(32px,5vw,52px);
+  letter-spacing:-1.4px;
+  font-weight:800;
+  color:#12383a;
+  position:relative;
+  z-index:2;
+}
+
+header p{
+  margin:10px auto 0;
+  max-width:760px;
+  color:#486363;
+  line-height:1.55;
+  position:relative;
+  z-index:2;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  padding:10px;
+  overflow-x:auto;
+}
+
+nav button{
+  border:1px solid transparent;
+  background:#f8f4ec;
+  color:#294544;
+  border-radius:999px;
+  padding:9px 16px;
+  cursor:pointer;
+  white-space:nowrap;
+  font-weight:650;
+  transition:.18s ease;
+}
+
+nav button:first-child{
+  background:var(--yellow);
+  color:#193b37;
+}
+
+nav button:hover{
+  transform:translateY(-1px);
+  background:#f4ead0;
+}
+
+nav button:first-child:hover{background:#e8bd3f}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:26px 18px 60px;
+}
+
+.section{margin:30px 0}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.section-title h2{margin:0;letter-spacing:-.4px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  padding:20px;
+}
+
+.hero-card{
+  background:linear-gradient(135deg,#fffdf8,#f7f2e7);
+}
+
+.search-row{display:flex;gap:10px;flex-wrap:wrap}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 14px;
+  font-size:15px;
+  outline:none;
+  background:white;
+  color:var(--text);
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:#d4b94e;
+  box-shadow:0 0 0 3px rgba(240,200,75,.18);
+}
+
+.search-main{flex:1 1 500px}
+
+button.primary{
+  background:var(--yellow);
+  color:#193b37;
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-weight:750;
+}
+
+button.primary:hover{background:#e8bd3f}
+
+button.secondary{
+  background:#f4efe8;
+  color:#36504e;
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+.filter{
+  padding:8px 13px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:white;
+  cursor:pointer;
+  color:#385251;
+}
+
+.filter.active{
+  background:var(--yellow);
+  color:#193b37;
+  border-color:var(--yellow);
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-top:18px;
+}
+
+.stat{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:17px;
+}
+
+.stat strong{
+  display:block;
+  font-size:27px;
+  color:var(--green-dark);
+}
+
+.stat:nth-child(2) strong{color:var(--coral)}
+.stat:nth-child(3) strong{color:#d39d1f}
+.stat:nth-child(4) strong{color:var(--lavender)}
+
+.disease-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(245px,1fr));
+  gap:15px;
+}
+
+.disease-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.disease-card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+  border-color:#d8cfae;
+}
+
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+
+.badge{
+  display:inline-block;
+  background:#f2eee7;
+  color:#4e625f;
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.badge.vet{background:#e6f1e8;color:#2c6d45}
+.badge.zoo{background:#fff0cf;color:#986b16}
+.badge.human{background:#e8edf8;color:#526a9e}
+
+.muted{color:var(--muted)}
+
+.profile{display:none}
+.profile.show{display:block}
+
+.profile-header{
+  border-bottom:1px solid var(--border);
+  padding-bottom:15px;
+  margin-bottom:20px;
+}
+
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+
+.info-box{
+  background:#fbfaf6;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px;
+}
+
+.info-box h4{margin-top:0;color:var(--green-dark)}
+
+.ai-box{
+  background:linear-gradient(135deg,#173e37,#2f6554);
+  color:white;
+  border-radius:22px;
+  padding:22px;
+}
+
+.ai-box input{margin-top:12px}
+
+.ai-examples{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+
+.ai-example{
+  background:rgba(255,255,255,.11);
+  color:white;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;
+  padding:7px 11px;
+  cursor:pointer;
+}
+
+.ai-answer{
+  margin-top:18px;
+  background:rgba(255,255,255,.09);
+  border-radius:16px;
+  padding:17px;
+  line-height:1.65;
+  white-space:normal;
+}
+
+.quiz-question{font-size:20px;font-weight:700;margin-bottom:15px}
+
+.quiz-options{display:grid;gap:8px}
+
+.quiz-options button{
+  text-align:left;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  cursor:pointer;
+}
+
+.quiz-options button:hover{background:#faf4df}
+
+.detective{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+
+@media(max-width:700px){
+  .detective{grid-template-columns:1fr}
+  header{padding-top:22px}
+  .club-logo{width:120px;height:120px}
+  nav{justify-content:flex-start}
+}
+
+.resource-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+.resource{
+  padding:17px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:white;
+}
+
+.resource a{color:var(--green-dark);font-weight:700;text-decoration:none}
+
+footer{text-align:center;padding:30px 15px;color:var(--muted);font-size:13px}
+
+.hidden{display:none!important}
+
+.notice{
+  background:#fff8e7;
+  border:1px solid #efd99b;
+  color:#765718;
+  padding:13px 15px;
+  border-radius:13px;
+  margin-top:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="club-logo.png" alt="Disease Study Club Logo" class="club-logo">
+  <h1>Disease Study Club</h1>
+  <p>
+    Explore human diseases, veterinary diseases, infectious diseases,
+    zoonoses, genetics, neurology, and One Health.
+  </p>
+</header>
+
+<nav>
+  <button onclick="scrollToId('library')">Disease Library</button>
+  <button onclick="scrollToId('ai')">AI Assistant</button>
+  <button onclick="scrollToId('detective')">Disease Detective</button>
+  <button onclick="scrollToId('quiz')">Quiz Lab</button>
+  <button onclick="scrollToId('onehealth')">One Health</button>
+  <button onclick="scrollToId('research')">Research Hub</button>
+</nav>
+
+<main class="container">
+
+<section class="section hero-card card">
+  <h2>Welcome to Disease Study Club</h2>
+  <p class="muted">
+    A student-friendly educational database for exploring diseases across
+    human medicine, veterinary medicine, and One Health.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="diseaseCount">0</strong>
+      Diseases
+    </div>
+    <div class="stat">
+      <strong id="zoonoticCount">0</strong>
+      Zoonotic
+    </div>
+    <div class="stat">
+      <strong id="vetCount">0</strong>
+      Veterinary
+    </div>
+    <div class="stat">
+      <strong id="categoryCount">7</strong>
+      Main Categories
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     DISEASE LIBRARY
+========================= -->
+
+<section id="library" class="section">
+  <div class="section-title">
+    <h2>🔎 Disease Library</h2>
+  </div>
+
+  <div class="card">
+    <div class="search-row">
+      <input
+        id="diseaseSearch"
+        class="search-main"
+        placeholder="Search disease, pathogen, symptom, animal, category..."
+        oninput="renderDiseases()"
+      >
+      <button class="secondary" onclick="clearSearch()">Clear</button>
+    </div>
+
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('All',this)">All</button>
+      <button class="filter" onclick="setFilter('Human',this)">Human</button>
+      <button class="filter" onclick="setFilter('Veterinary',this)">Veterinary</button>
+      <button class="filter" onclick="setFilter('Zoonotic',this)">Zoonotic</button>
+      <button class="filter" onclick="setFilter('Infectious',this)">Infectious</button>
+      <button class="filter" onclick="setFilter('Neurology',this)">Neurology</button>
+      <button class="filter" onclick="setFilter('Genetic',this)">Genetic</button>
+      <button class="filter" onclick="setFilter('Autoimmune',this)">Autoimmune</button>
+    </div>
+  </div>
+
+  <div id="diseaseGrid" class="disease-grid" style="margin-top:15px;"></div>
+</section>
+
+
+<!-- =========================
+     DISEASE PROFILE
+========================= -->
+
+<section id="profileSection" class="section profile">
+  <div id="profile" class="card"></div>
+</section>
+
+
+<!-- =========================
+     AI ASSISTANT
+========================= -->
+
+<section id="ai" class="section">
+  <div class="section-title">
+    <h2>🤖 Disease Knowledge Assistant</h2>
+  </div>
+
+  <div class="ai-box">
+
+    <h3>Ask a Disease Question</h3>
+
+    <p>
+      Ask questions about diseases, symptoms, pathogens, diagnosis,
+      treatment, veterinary medicine, zoonoses, prevention, or One Health.
+    </p>
+
+    <input
+      id="aiInput"
+      placeholder="Example: What are the symptoms of rabies?"
+      onkeydown="if(event.key==='Enter') askAI()"
+    >
+
+    <div class="ai-examples">
+      <button class="ai-example" onclick="useQuestion('What is rabies?')">
+        What is rabies?
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('How is rabies transmitted?')">
+        How is it transmitted?
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('Can humans get rabies?')">
+        Can humans get it?
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('What animals can get FIP?')">
+        What animals can get FIP?
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('Compare rabies and tetanus')">
+        Compare two diseases
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('Give me a study summary of parvovirus')">
+        Study summary
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('Make me a quiz about leptospirosis')">
+        Make a quiz
+      </button>
+
+      <button class="ai-example" onclick="useQuestion('What is the One Health importance of leptospirosis?')">
+        One Health
+      </button>
+    </div>
+
+    <button
+      class="primary"
+      style="margin-top:14px;background:white;color:#4d3fa9;"
+      onclick="askAI()"
+    >
+      Ask Assistant
+    </button>
+
+    <div id="aiAnswer" class="ai-answer">
+      Ask a question to begin.
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     DISEASE DETECTIVE
+========================= -->
+
+<section id="detective" class="section">
+  <div class="section-title">
+    <h2>🕵️ Disease Detective</h2>
+  </div>
+
+  <div class="card detective">
+
+    <div>
+      <h3>Clinical Clues</h3>
+
+      <label>Patient type</label>
+      <select id="detectiveHost">
+        <option value="any">Any</option>
+        <option value="human">Human</option>
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="horse">Horse</option>
+        <option value="livestock">Livestock</option>
+        <option value="wildlife">Wildlife</option>
+      </select>
+
+      <br><br>
+
+      <label>Main clue</label>
+      <select id="detectiveClue">
+        <option value="fever">Fever</option>
+        <option value="neurologic">Neurologic signs</option>
+        <option value="diarrhea">Diarrhea</option>
+        <option value="respiratory">Respiratory signs</option>
+        <option value="jaundice">Jaundice</option>
+        <option value="skin">Skin lesions</option>
+        <option value="vomiting">Vomiting</option>
+        <option value="weakness">Weakness</option>
+      </select>
+
+      <button class="primary" style="margin-top:15px;" onclick="runDetective()">
+        Investigate
+      </button>
+    </div>
+
+    <div>
+      <h3>Possible Diseases</h3>
+      <div id="detectiveResult" class="muted">
+        Enter clues and investigate.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================
+     QUIZ LAB
+========================= -->
+
+<section id="quiz" class="section">
+  <div class="section-title">
+    <h2>🧠 Quiz Lab</h2>
+  </div>
+
+  <div class="card">
+    <div id="quizContent"></div>
+
+    <button class="primary" onclick="newQuiz()" style="margin-top:15px;">
+      New Question
+    </button>
+  </div>
+</section>
+
+
+<!-- =========================
+     ONE HEALTH
+========================= -->
+
+<section id="onehealth" class="section">
+  <div class="section-title">
+    <h2>🌎 One Health</h2>
+  </div>
+
+  <div class="card">
+    <h3>Human + Animal + Environment</h3>
+
+    <p>
+      One Health recognizes that human health, animal health,
+      and environmental health are connected.
+    </p>
+
+    <div class="profile-grid">
+
+      <div class="info-box">
+        <h4>👤 Human Health</h4>
+        <p>
+          Human disease prevention, diagnosis, treatment,
+          public health, and epidemiology.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h4>🐾 Animal Health</h4>
+        <p>
+          Veterinary medicine, animal welfare, livestock,
+          companion animals, and wildlife health.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h4>🌱 Environment</h4>
+        <p>
+          Water, soil, ecosystems, vectors, wildlife,
+          sanitation, and environmental exposure.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================
+     RESEARCH HUB
+========================= -->
+
+<section id="research" class="section">
+  <div class="section-title">
+    <h2>📚 Research Hub</h2>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource">
+      <h3>MedlinePlus</h3>
+      <p>Reliable patient-friendly human health information.</p>
+      <a href="https://medlineplus.gov/" target="_blank">
+        Open MedlinePlus →
+      </a>
+    </div>
+
+    <div class="resource">
+      <h3>Merck Veterinary Manual</h3>
+      <p>Veterinary and animal-health reference information.</p>
+      <a href="https://www.merckvetmanual.com/" target="_blank">
+        Open Merck Veterinary Manual →
+      </a>
+    </div>
+
+    <div class="resource">
+      <h3>WHO</h3>
+      <p>Global public-health and disease information.</p>
+      <a href="https://www.who.int/" target="_blank">
+        Open WHO →
+      </a>
+    </div>
+
+    <div class="resource">
+      <h3>PHAC</h3>
+      <p>Canadian public-health information.</p>
+      <a href="https://www.canada.ca/en/public-health.html" target="_blank">
+        Open PHAC →
+      </a>
+    </div>
+
+    <div class="resource">
+      <h3>NLM Clinical Tables</h3>
+      <p>Searchable biomedical terminology and clinical data.</p>
+      <a href="https://clinicaltables.nlm.nih.gov/" target="_blank">
+        Open NLM Clinical Tables →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="notice">
+  <strong>Educational notice:</strong>
+  This website is designed for student education and disease study.
+  Treatment and medication information is not a substitute for advice
+  from a physician, veterinarian, pharmacist, or other qualified professional.
+</div>
+
+</main>
+
+<footer>
+  Disease Study Club • v4.1 Final • Educational Student Project
+</footer>
+
+
+<script>
+
+/* =========================================================
+   DISEASE DATABASE
+========================================================= */
+
+const D = [
+
+{
+name:"Rabies",
+categories:["Human","Veterinary","Zoonotic","Infectious","Neurology"],
+pathogen:"Rabies lyssavirus",
+classification:"Viral infection; neurotropic zoonosis",
+hosts:"Mammals including dogs, cats, bats, raccoons, foxes, and humans",
+transmission:"Usually through saliva introduced by a bite or contaminated wound.",
+incubation:"Usually weeks to months, but variable.",
+symptoms:"Fever, abnormal sensations at the exposure site, anxiety, confusion, difficulty swallowing, hydrophobia, paralysis, and progressive neurologic dysfunction.",
+diagnosis:"Post-exposure assessment and specialized laboratory testing; definitive diagnosis commonly relies on laboratory examination of appropriate specimens.",
+treatment:"Once clinical disease develops, rabies is almost always fatal. After a possible exposure, urgent medical/public-health assessment is essential because post-exposure prophylaxis can prevent disease.",
+medications:"Post-exposure prophylaxis may include rabies vaccine and, when indicated, rabies immunoglobulin. Veterinary exposure management requires professional guidance.",
+prevention:"Vaccination, avoiding contact with unfamiliar wildlife, vaccination of companion animals, and prompt wound assessment after possible exposure.",
+prognosis:"Clinical rabies has an extremely poor prognosis.",
+complications:"Severe encephalitis, paralysis, coma, and death.",
+risk:"Unvaccinated mammals and exposure to infected saliva.",
+onehealth:"Rabies is a major One Health disease because prevention involves human medicine, veterinary vaccination, wildlife management, and public health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Canine Parvovirus",
+categories:["Veterinary","Infectious"],
+pathogen:"Canine parvovirus type 2",
+classification:"Highly contagious viral enteric disease",
+hosts:"Primarily dogs, especially puppies and unvaccinated dogs",
+transmission:"Fecal-oral transmission and contaminated environments, objects, people, and surfaces.",
+incubation:"Usually several days.",
+symptoms:"Vomiting, severe diarrhea, dehydration, lethargy, anorexia, abdominal discomfort, and sometimes hemorrhagic diarrhea.",
+diagnosis:"Clinical assessment, fecal antigen testing, PCR, and supportive laboratory testing.",
+treatment:"Aggressive supportive veterinary care including fluid therapy, antiemetic treatment, nutritional support, and management of complications.",
+medications:"Veterinarians may use antiemetics, fluid therapy, analgesia, and antibiotics when secondary bacterial infection is a concern.",
+prevention:"Vaccination, isolation of infected dogs, environmental disinfection, and avoiding high-risk exposure for incompletely vaccinated puppies.",
+prognosis:"With early intensive supportive care, many dogs recover; severe disease can be fatal.",
+complications:"Dehydration, electrolyte disturbances, sepsis, hypoglycemia, and death.",
+risk:"Young age, incomplete vaccination, and contaminated environments.",
+onehealth:"Primarily an animal-health disease, but demonstrates the importance of hygiene and responsible animal care.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Infectious Peritonitis",
+categories:["Veterinary","Infectious"],
+pathogen:"Feline coronavirus-associated disease",
+classification:"Systemic feline infectious disease",
+hosts:"Domestic and wild felids",
+transmission:"Feline coronavirus commonly spreads through fecal-oral routes; FIP results from complex disease processes within an infected cat.",
+incubation:"Variable.",
+symptoms:"Fever, weight loss, lethargy, poor appetite, abdominal fluid, chest fluid, neurologic signs, or ocular disease depending on form.",
+diagnosis:"Combination of clinical findings, laboratory testing, imaging, fluid analysis, and specialized testing.",
+treatment:"Antiviral treatment protocols may be effective but should be managed by a veterinarian.",
+medications:"Veterinary antiviral therapy may be considered; supportive care is also important.",
+prevention:"Hygiene, reducing crowding and stress, and appropriate litter-box management.",
+prognosis:"Historically poor, but modern veterinary antiviral treatment has substantially changed outcomes.",
+complications:"Effusions, neurologic disease, ocular disease, organ dysfunction.",
+risk:"Young cats, crowded environments, and multi-cat households.",
+onehealth:"FIP is primarily veterinary rather than zoonotic and is not considered a typical human zoonosis.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Leptospirosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Leptospira species",
+classification:"Bacterial zoonotic infection",
+hosts:"Humans, dogs, livestock, rodents, wildlife, and many other mammals",
+transmission:"Exposure to urine-contaminated water, soil, or environments.",
+incubation:"Usually several days to a few weeks.",
+symptoms:"Fever, headache, muscle pain, vomiting, jaundice, kidney dysfunction, and sometimes meningitis.",
+diagnosis:"Serology, PCR, and other laboratory testing depending on stage and species.",
+treatment:"Early antimicrobial treatment and supportive care.",
+medications:"Antibiotics are selected by clinicians or veterinarians based on species and disease severity.",
+prevention:"Vaccination in dogs where appropriate, avoiding contaminated water, rodent control, sanitation, and protective equipment.",
+prognosis:"Variable; severe disease can cause organ failure.",
+complications:"Kidney injury, liver injury, pulmonary hemorrhage, meningitis, and death.",
+risk:"Floodwater, contaminated environments, occupational exposure, and animal contact.",
+onehealth:"A classic One Health disease linking wildlife, livestock, companion animals, water, and humans.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Tuberculosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Mycobacterium tuberculosis complex",
+classification:"Chronic bacterial infection",
+hosts:"Humans and several animal species depending on organism",
+transmission:"Primarily through airborne particles for human tuberculosis; routes vary by species and organism.",
+incubation:"Often prolonged.",
+symptoms:"Persistent cough, fever, night sweats, weight loss, weakness, and organ-specific disease.",
+diagnosis:"Skin or blood testing, imaging, microscopy, culture, and molecular testing depending on context.",
+treatment:"Combination antimicrobial therapy for an extended period under professional supervision.",
+medications:"Multiple antimicrobials may be combined to reduce resistance.",
+prevention:"Testing, infection control, vaccination policies in certain countries, and control of infected animal populations where relevant.",
+prognosis:"Treatable, but untreated disease can be severe or fatal.",
+complications:"Respiratory failure, disseminated disease, meningitis, and organ damage.",
+risk:"Close contact, immunocompromise, and exposure to infected people or animals.",
+onehealth:"Animal tuberculosis and human tuberculosis involve public health, veterinary surveillance, food systems, and wildlife management.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Influenza",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Influenza A, B, and related influenza viruses",
+classification:"Viral respiratory infection",
+hosts:"Humans and many animal species depending on strain",
+transmission:"Respiratory droplets, aerosols, and contaminated surfaces.",
+incubation:"Usually about 1–4 days.",
+symptoms:"Fever, cough, sore throat, muscle aches, headache, fatigue, and respiratory symptoms.",
+diagnosis:"Often clinical; molecular testing can identify influenza viruses.",
+treatment:"Supportive care; antivirals may be used for certain patients and circumstances.",
+medications:"Antiviral medications may be prescribed based on age, risk factors, and timing.",
+prevention:"Vaccination, hand hygiene, ventilation, and staying home when sick.",
+prognosis:"Usually self-limited, but complications can occur.",
+complications:"Pneumonia, secondary bacterial infection, and worsening of underlying conditions.",
+risk:"Young children, older adults, pregnancy, and certain medical conditions.",
+onehealth:"Some influenza viruses circulate among animals and can occasionally infect humans.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Lyme Disease",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Borrelia burgdorferi and related Borrelia species",
+classification:"Tick-borne bacterial infection",
+hosts:"Humans, dogs, wildlife, and other mammals",
+transmission:"Primarily through infected Ixodes ticks.",
+incubation:"Often days to weeks after tick exposure.",
+symptoms:"Expanding rash in some patients, fever, fatigue, headache, joint pain, and neurologic or cardiac manifestations in some cases.",
+diagnosis:"Clinical assessment and appropriate laboratory testing.",
+treatment:"Antibiotic therapy selected according to clinical presentation.",
+medications:"Specific antibiotics are prescribed based on age, disease stage, and clinical circumstances.",
+prevention:"Tick avoidance, tick checks, protective clothing, and veterinary tick prevention.",
+prognosis:"Generally good with appropriate treatment, although complications can occur.",
+complications:"Arthritis, neurologic disease, and cardiac involvement.",
+risk:"Tick exposure in endemic areas.",
+onehealth:"Lyme disease involves wildlife reservoirs, ticks, companion animals, humans, and ecosystems.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Tetanus",
+categories:["Human","Veterinary","Infectious","Neurology"],
+pathogen:"Clostridium tetani toxin",
+classification:"Toxin-mediated bacterial disease",
+hosts:"Humans and many animals",
+transmission:"Spores enter damaged tissue; disease is not usually spread person-to-person.",
+incubation:"Usually days to weeks.",
+symptoms:"Muscle rigidity, painful spasms, lockjaw, difficulty swallowing, and autonomic instability.",
+diagnosis:"Primarily clinical.",
+treatment:"Wound care, toxin-neutralizing therapy, antibiotics when indicated, and intensive supportive care.",
+medications:"Tetanus immune globulin and antimicrobial therapy may be used depending on clinical circumstances.",
+prevention:"Vaccination and proper wound management.",
+prognosis:"Potentially severe but preventable.",
+complications:"Respiratory failure, fractures, autonomic instability, and death.",
+risk:"Deep or contaminated wounds and incomplete vaccination.",
+onehealth:"Tetanus illustrates the importance of vaccination and environmental exposure prevention in humans and animals.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Panleukopenia",
+categories:["Veterinary","Infectious"],
+pathogen:"Feline panleukopenia virus",
+classification:"Highly contagious feline viral disease",
+hosts:"Cats and some related felids",
+transmission:"Fecal-oral and environmental transmission.",
+incubation:"Usually several days.",
+symptoms:"Fever, depression, vomiting, diarrhea, dehydration, anorexia, and low white blood cell counts.",
+diagnosis:"Clinical findings, bloodwork, antigen testing, and PCR.",
+treatment:"Supportive veterinary care with fluids, nutritional support, antiemetics, and management of secondary complications.",
+medications:"Supportive medications are selected by a veterinarian.",
+prevention:"Vaccination and rigorous hygiene.",
+prognosis:"Can be severe, especially in kittens.",
+complications:"Severe dehydration, sepsis, hypoglycemia, and death.",
+risk:"Unvaccinated kittens and contaminated environments.",
+onehealth:"Important feline population-health disease but not a typical human zoonosis.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Canine Distemper",
+categories:["Veterinary","Infectious","Neurology"],
+pathogen:"Canine distemper virus",
+classification:"Viral multisystem disease",
+hosts:"Dogs and various carnivores",
+transmission:"Respiratory secretions and close contact.",
+incubation:"Usually several days to a few weeks.",
+symptoms:"Fever, eye and nasal discharge, coughing, gastrointestinal signs, skin changes, and neurologic abnormalities.",
+diagnosis:"PCR, clinical findings, and laboratory testing.",
+treatment:"Supportive care and management of secondary infections and neurologic complications.",
+medications:"Supportive medications are selected according to clinical signs.",
+prevention:"Vaccination.",
+prognosis:"Variable; neurologic disease can have a guarded prognosis.",
+complications:"Pneumonia, seizures, chronic neurologic disease, and death.",
+risk:"Unvaccinated dogs and wildlife exposure.",
+onehealth:"Primarily veterinary and wildlife health.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Heartworm Disease",
+categories:["Veterinary","Infectious"],
+pathogen:"Dirofilaria immitis",
+classification:"Parasitic disease",
+hosts:"Dogs and other carnivores; mosquitoes act as vectors",
+transmission:"Mosquito bites transmit infective larvae.",
+incubation:"Development takes months.",
+symptoms:"Cough, exercise intolerance, weight loss, respiratory distress, and cardiovascular disease.",
+diagnosis:"Antigen testing, microfilaria testing, imaging, and additional diagnostics.",
+treatment:"Veterinary-managed adulticide and supportive protocols.",
+medications:"Preventive drugs and adulticide protocols may be used under veterinary supervision.",
+prevention:"Regular heartworm prevention and mosquito exposure reduction.",
+prognosis:"Better when detected early; severe disease can be dangerous.",
+complications:"Pulmonary hypertension, heart failure, caval syndrome, and death.",
+risk:"Dogs living in mosquito-exposed regions without prevention.",
+onehealth:"Primarily animal health, but demonstrates vector-borne disease ecology.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Giardiasis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Giardia species",
+classification:"Protozoal intestinal infection",
+hosts:"Humans, dogs, cats, wildlife, and other mammals",
+transmission:"Fecal-oral transmission through contaminated water, food, or surfaces.",
+incubation:"Usually about 1–2 weeks.",
+symptoms:"Diarrhea, abdominal discomfort, bloating, nausea, and malabsorption.",
+diagnosis:"Stool antigen, PCR, microscopy, or other stool testing.",
+treatment:"Antiprotozoal therapy and hydration when necessary.",
+medications:"Medication depends on patient and species.",
+prevention:"Hand hygiene, safe water, sanitation, and cleaning contaminated environments.",
+prognosis:"Usually good.",
+complications:"Dehydration and prolonged gastrointestinal symptoms.",
+risk:"Contaminated water, childcare settings, crowded animal environments.",
+onehealth:"Giardia has complex transmission between humans, animals, and environments.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Toxoplasmosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Toxoplasma gondii",
+classification:"Protozoal parasitic infection",
+hosts:"Cats are definitive hosts; many warm-blooded animals can be infected.",
+transmission:"Ingestion of contaminated material, undercooked meat, or exposure to cat feces.",
+incubation:"Variable.",
+symptoms:"Often asymptomatic; can cause flu-like symptoms or serious disease in vulnerable people.",
+diagnosis:"Serology, PCR, and other specialized testing.",
+treatment:"Antiparasitic therapy may be used in selected cases.",
+medications:"Drug combinations are chosen according to patient and disease severity.",
+prevention:"Safe food preparation, hand hygiene, and careful litter-box hygiene.",
+prognosis:"Usually good in healthy individuals; serious disease can occur in vulnerable patients.",
+complications:"Eye disease, neurologic disease, and congenital infection.",
+risk:"Pregnancy, immunocompromise, and contaminated food or soil.",
+onehealth:"A major One Health parasite involving cats, food systems, wildlife, and humans.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Brucellosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Brucella species",
+classification:"Bacterial zoonosis",
+hosts:"Cattle, goats, sheep, pigs, dogs, wildlife, and humans depending on species",
+transmission:"Animal tissues, reproductive fluids, milk, or other contaminated materials.",
+incubation:"Variable and often prolonged.",
+symptoms:"Fever, fatigue, sweating, joint pain, and systemic illness.",
+diagnosis:"Culture and serologic testing.",
+treatment:"Combination antibiotic therapy under medical supervision.",
+medications:"Specific antibiotic combinations depend on the clinical situation.",
+prevention:"Animal surveillance, vaccination programs where applicable, pasteurization, and protective equipment.",
+prognosis:"Treatable but can become chronic.",
+complications:"Arthritis, organ involvement, and recurrent symptoms.",
+risk:"Occupational animal exposure and unpasteurized dairy products.",
+onehealth:"Strong One Health connection involving livestock, food safety, veterinary surveillance, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Anthrax",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Bacillus anthracis",
+classification:"Spore-forming bacterial zoonosis",
+hosts:"Herbivorous livestock, wildlife, and humans",
+transmission:"Contact with infected animals or contaminated animal products; route depends on disease form.",
+incubation:"Usually several days but variable.",
+symptoms:"Skin lesions, gastrointestinal illness, respiratory disease, fever, and systemic toxicity depending on form.",
+diagnosis:"Laboratory testing and clinical assessment.",
+treatment:"Urgent antimicrobial treatment and supportive care.",
+medications:"Antibiotics selected by specialists.",
+prevention:"Animal vaccination in relevant areas, safe handling of carcasses, and public-health control measures.",
+prognosis:"Depends on form and speed of treatment.",
+complications:"Sepsis, meningitis, respiratory failure, and death.",
+risk:"Occupational exposure to infected animals or animal products.",
+onehealth:"A classic zoonosis connecting livestock, wildlife, environmental spores, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Salmonellosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Salmonella species",
+classification:"Bacterial enteric infection",
+hosts:"Humans and many animals",
+transmission:"Contaminated food, water, fecal material, and animal contact.",
+incubation:"Usually hours to days.",
+symptoms:"Diarrhea, fever, abdominal cramps, nausea, and sometimes vomiting.",
+diagnosis:"Stool culture or molecular testing.",
+treatment:"Hydration and supportive care; antibiotics for selected severe or high-risk cases.",
+medications:"Antibiotics may be prescribed depending on severity and resistance.",
+prevention:"Food safety, hand hygiene, sanitation, and safe animal handling.",
+prognosis:"Usually good but severe disease can occur.",
+complications:"Dehydration, bloodstream infection, and reactive complications.",
+risk:"Contaminated food and contact with infected animals.",
+onehealth:"Important foodborne and zoonotic disease.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Campylobacteriosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Campylobacter species",
+classification:"Bacterial gastrointestinal infection",
+hosts:"Humans, poultry, cattle, dogs, cats, and wildlife",
+transmission:"Contaminated food, water, and animal feces.",
+incubation:"Usually several days.",
+symptoms:"Diarrhea, abdominal pain, fever, and sometimes vomiting.",
+diagnosis:"Stool testing.",
+treatment:"Hydration and supportive care; antibiotics for selected cases.",
+medications:"Antibiotics may be used in severe disease.",
+prevention:"Food hygiene, handwashing, and safe animal handling.",
+prognosis:"Usually good.",
+complications:"Dehydration and rarely neurologic or reactive complications.",
+risk:"Undercooked poultry and animal exposure.",
+onehealth:"Links food safety, companion animals, livestock, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"E. coli Infection",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Pathogenic Escherichia coli strains",
+classification:"Bacterial infection",
+hosts:"Humans and animals",
+transmission:"Food, water, fecal contamination, or direct contact depending on strain.",
+incubation:"Usually days.",
+symptoms:"Diarrhea, abdominal cramps, vomiting, and sometimes bloody diarrhea.",
+diagnosis:"Stool testing.",
+treatment:"Supportive care; management varies by strain.",
+medications:"Some cases require specific medical management; antibiotic use depends on strain and clinical situation.",
+prevention:"Food safety, hand hygiene, sanitation.",
+prognosis:"Usually good, but some strains can cause severe complications.",
+complications:"Hemolytic uremic syndrome with certain toxin-producing strains.",
+risk:"Contaminated food or water.",
+onehealth:"Important in food production and animal-human transmission systems.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Avian Influenza",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Influenza A viruses",
+classification:"Viral disease of birds with occasional mammalian infection",
+hosts:"Wild birds, poultry, and some mammals",
+transmission:"Primarily between birds through secretions and fecal contamination; some strains can infect mammals.",
+incubation:"Variable.",
+symptoms:"Birds may show respiratory, neurologic, or systemic disease; human illness varies by strain.",
+diagnosis:"Specialized laboratory testing.",
+treatment:"Supportive care and public-health-directed antiviral management in human cases.",
+medications:"Antiviral treatment may be considered for infected humans.",
+prevention:"Biosecurity, surveillance, avoiding exposure to sick/dead birds, and public-health measures.",
+prognosis:"Highly variable by strain and host.",
+complications:"Severe respiratory disease or systemic illness.",
+risk:"Close contact with infected animals or contaminated environments.",
+onehealth:"Major One Health concern involving wildlife, poultry, agriculture, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"West Nile Virus",
+categories:["Human","Veterinary","Zoonotic","Infectious","Neurology"],
+pathogen:"West Nile virus",
+classification:"Mosquito-borne viral infection",
+hosts:"Birds are important reservoir hosts; humans and horses can develop disease.",
+transmission:"Mosquito bites.",
+incubation:"Usually several days to two weeks.",
+symptoms:"Often mild or asymptomatic; severe cases can cause fever, meningitis, encephalitis, weakness, or paralysis.",
+diagnosis:"Serologic and molecular testing.",
+treatment:"Supportive care.",
+medications:"No universally curative antiviral treatment; management is supportive.",
+prevention:"Mosquito control, repellents, protective clothing, and reducing standing water.",
+prognosis:"Most infections are mild; neuroinvasive disease can be severe.",
+complications:"Encephalitis, paralysis, and long-term neurologic effects.",
+risk:"Mosquito exposure and older age.",
+onehealth:"Birds, mosquitoes, horses, humans, and environmental conditions interact in transmission.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Equine Encephalitis",
+categories:["Veterinary","Zoonotic","Infectious","Neurology"],
+pathogen:"Eastern, Western, or related equine encephalitis viruses",
+classification:"Mosquito-borne viral encephalitis",
+hosts:"Birds, horses, humans, and mosquitoes",
+transmission:"Mosquito bites.",
+incubation:"Usually several days.",
+symptoms:"Fever, depression, ataxia, altered behavior, seizures, and neurologic dysfunction.",
+diagnosis:"Serology and specialized laboratory testing.",
+treatment:"Supportive veterinary or medical care.",
+medications:"Supportive medications are selected according to clinical signs.",
+prevention:"Vaccination for horses where indicated and mosquito control.",
+prognosis:"Neurologic disease can be severe.",
+complications:"Permanent neurologic damage or death.",
+risk:"Mosquito exposure.",
+onehealth:"Connects wildlife birds, mosquitoes, horses, humans, and ecosystems.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Feline Leukemia Virus",
+categories:["Veterinary","Infectious"],
+pathogen:"Feline leukemia virus",
+classification:"Retroviral infection",
+hosts:"Domestic and wild cats",
+transmission:"Close contact, saliva, grooming, bites, and maternal transmission.",
+incubation:"Variable; disease may develop over long periods.",
+symptoms:"Weight loss, recurrent infections, anemia, lymphoma, and immune dysfunction.",
+diagnosis:"Screening antigen tests followed by confirmatory testing.",
+treatment:"Supportive care and treatment of secondary disease.",
+medications:"Management depends on complications.",
+prevention:"Vaccination for appropriate cats, testing, and reducing exposure.",
+prognosis:"Variable.",
+complications:"Cancer, immune suppression, anemia, and infection.",
+risk:"Outdoor exposure and close contact with infected cats.",
+onehealth:"Important feline health disease; not considered a typical human zoonosis.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Immunodeficiency Virus",
+categories:["Veterinary","Infectious"],
+pathogen:"Feline immunodeficiency virus",
+classification:"Retroviral immune disease",
+hosts:"Cats",
+transmission:"Primarily through bite wounds.",
+incubation:"Long and variable.",
+symptoms:"Recurrent infections, weight loss, oral disease, fever, and immune dysfunction.",
+diagnosis:"Antibody testing with confirmatory approaches.",
+treatment:"Supportive care and management of secondary infections.",
+medications:"Treatment is directed toward complications.",
+prevention:"Reducing fighting and exposure to infected cats.",
+prognosis:"Variable and often prolonged.",
+complications:"Chronic infections and immune dysfunction.",
+risk:"Outdoor cats with fighting exposure.",
+onehealth:"Important feline disease but not a typical human zoonosis.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Kennel Cough",
+categories:["Veterinary","Infectious"],
+pathogen:"Multiple respiratory pathogens including Bordetella bronchiseptica",
+classification:"Canine infectious respiratory disease complex",
+hosts:"Primarily dogs",
+transmission:"Respiratory droplets and close contact.",
+incubation:"Usually several days.",
+symptoms:"Persistent cough, gagging, nasal discharge, and mild respiratory signs.",
+diagnosis:"Usually clinical; testing may be used in outbreaks or severe cases.",
+treatment:"Supportive care and veterinary-directed treatment.",
+medications:"Medication depends on severity and suspected cause.",
+prevention:"Vaccination and reducing close contact during outbreaks.",
+prognosis:"Usually good.",
+complications:"Pneumonia in some dogs.",
+risk:"Boarding facilities, shelters, dog daycare.",
+onehealth:"Primarily veterinary health.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Canine Lyme Disease",
+categories:["Veterinary","Zoonotic","Infectious"],
+pathogen:"Borrelia burgdorferi",
+classification:"Tick-borne bacterial infection",
+hosts:"Dogs, humans, wildlife",
+transmission:"Infected ticks.",
+incubation:"Weeks to months.",
+symptoms:"Fever, lethargy, shifting-leg lameness, swollen joints, and occasionally kidney disease.",
+diagnosis:"Serology and clinical evaluation.",
+treatment:"Veterinary-directed antibiotics and supportive care.",
+medications:"Antibiotics are selected by veterinarians.",
+prevention:"Tick control and vaccination where appropriate.",
+prognosis:"Often good but kidney complications can be serious.",
+complications:"Kidney disease and recurrent joint inflammation.",
+risk:"Tick exposure.",
+onehealth:"Human and canine Lyme disease share environmental tick ecology.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Mastitis",
+categories:["Veterinary","Infectious"],
+pathogen:"Multiple bacterial pathogens",
+classification:"Inflammatory/infectious mammary gland disease",
+hosts:"Dairy cattle and other lactating mammals",
+transmission:"Environmental or contagious bacterial exposure.",
+incubation:"Variable.",
+symptoms:"Swollen painful udder, abnormal milk, fever, reduced milk production.",
+diagnosis:"Clinical examination, milk testing, and culture.",
+treatment:"Veterinary-directed antimicrobial therapy and supportive care.",
+medications:"Antimicrobials and anti-inflammatory/supportive treatment may be used.",
+prevention:"Milking hygiene, equipment sanitation, and herd management.",
+prognosis:"Variable depending on severity.",
+complications:"Chronic infection, tissue damage, reduced production, systemic illness.",
+risk:"Poor udder hygiene and environmental contamination.",
+onehealth:"Important for animal welfare, food production, antimicrobial stewardship, and food safety.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Foot-and-Mouth Disease",
+categories:["Veterinary","Infectious"],
+pathogen:"Foot-and-mouth disease virus",
+classification:"Highly contagious viral livestock disease",
+hosts:"Cloven-hoofed animals",
+transmission:"Direct contact, aerosols, contaminated equipment, clothing, vehicles, and materials.",
+incubation:"Usually days.",
+symptoms:"Fever, mouth lesions, foot lesions, drooling, lameness, and reduced production.",
+diagnosis:"Specialized laboratory testing.",
+treatment:"Control focuses on biosecurity, movement restrictions, and eradication strategies.",
+medications:"No routine curative antiviral treatment.",
+prevention:"Biosecurity, surveillance, vaccination policies where used, and movement controls.",
+prognosis:"Mortality is often low in adults but economic and animal-welfare effects can be substantial.",
+complications:"Lameness, production loss, secondary infection.",
+risk:"Animal movement and contaminated materials.",
+onehealth:"Important livestock, food-security, trade, and agricultural-health disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"African Swine Fever",
+categories:["Veterinary","Infectious"],
+pathogen:"African swine fever virus",
+classification:"Viral disease of pigs",
+hosts:"Domestic and wild pigs",
+transmission:"Direct contact, contaminated materials, and some vectors depending on region.",
+incubation:"Usually several days.",
+symptoms:"High fever, weakness, hemorrhage, skin discoloration, and sudden death in severe forms.",
+diagnosis:"Molecular laboratory testing.",
+treatment:"No specific curative treatment.",
+medications:"Supportive care is limited by severity; disease control relies heavily on biosecurity.",
+prevention:"Strict biosecurity and movement controls.",
+prognosis:"Often severe in affected domestic pigs.",
+complications:"Hemorrhage, shock, and death.",
+risk:"Animal movement and contaminated equipment.",
+onehealth:"Important agricultural and ecosystem-health issue.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Newcastle Disease",
+categories:["Veterinary","Infectious"],
+pathogen:"Avian orthoavulavirus 1",
+classification:"Contagious avian viral disease",
+hosts:"Domestic poultry and wild birds",
+transmission:"Respiratory and fecal contamination.",
+incubation:"Usually several days.",
+symptoms:"Respiratory signs, diarrhea, depression, neurologic signs, and mortality.",
+diagnosis:"Laboratory testing.",
+treatment:"Supportive care and outbreak control.",
+medications:"No specific curative antiviral therapy.",
+prevention:"Biosecurity and vaccination programs.",
+prognosis:"Variable by strain.",
+complications:"Severe neurologic or respiratory disease and death.",
+risk:"Poultry and bird exposure.",
+onehealth:"Primarily animal health and agricultural disease control.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Psittacosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Chlamydia psittaci",
+classification:"Bacterial zoonosis",
+hosts:"Birds and humans",
+transmission:"Inhalation of contaminated dust from bird droppings or respiratory secretions.",
+incubation:"Usually around 1–2 weeks.",
+symptoms:"Fever, headache, dry cough, pneumonia, and systemic illness.",
+diagnosis:"PCR, serology, or culture.",
+treatment:"Appropriate antibiotics.",
+medications:"Tetracycline-class therapy is commonly used in human medicine when appropriate.",
+prevention:"Bird hygiene, ventilation, protective equipment, and veterinary treatment of infected birds.",
+prognosis:"Usually good with appropriate treatment.",
+complications:"Pneumonia and systemic disease.",
+risk:"Bird owners, poultry workers, and avian exposure.",
+onehealth:"Directly connects companion birds, wildlife, veterinary medicine, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Q Fever",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Coxiella burnetii",
+classification:"Bacterial zoonosis",
+hosts:"Ruminants, wildlife, and humans",
+transmission:"Usually inhalation of contaminated particles, especially around birth products.",
+incubation:"Often several weeks.",
+symptoms:"Fever, headache, fatigue, and sometimes pneumonia or hepatitis.",
+diagnosis:"Serology and molecular testing.",
+treatment:"Antibiotic therapy under medical supervision.",
+medications:"Specific antibiotics are selected according to patient and disease.",
+prevention:"Farm biosecurity, appropriate handling of birth materials, and protective measures.",
+prognosis:"Usually good, but chronic complications can occur.",
+complications:"Endocarditis and chronic infection.",
+risk:"Livestock exposure and occupational settings.",
+onehealth:"Strong livestock-human-environment connection.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Hantavirus Disease",
+categories:["Human","Zoonotic","Infectious"],
+pathogen:"Hantaviruses",
+classification:"Rodent-associated viral disease",
+hosts:"Rodents and humans",
+transmission:"Exposure to aerosolized particles contaminated by infected rodent urine, feces, or saliva.",
+incubation:"Usually several weeks.",
+symptoms:"Fever, muscle aches, headache, followed in severe forms by respiratory distress.",
+diagnosis:"Specialized laboratory testing.",
+treatment:"Intensive supportive medical care.",
+medications:"No universally effective specific antiviral treatment.",
+prevention:"Rodent control and safe cleanup of contaminated areas.",
+prognosis:"Some forms can be severe and life-threatening.",
+complications:"Pulmonary edema, shock, and respiratory failure.",
+risk:"Rodent-infested environments.",
+onehealth:"Strong environmental and wildlife-health connection.",
+zoonotic:true,
+vet:false
+},
+
+{
+name:"Echinococcosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Echinococcus species",
+classification:"Parasitic zoonosis",
+hosts:"Dogs and wild canids as definitive hosts; livestock and humans can act as intermediate hosts depending on species.",
+transmission:"Ingestion of parasite eggs from contaminated environments.",
+incubation:"Often years.",
+symptoms:"Depends on cyst location; liver and lung disease are common forms.",
+diagnosis:"Imaging and serologic testing.",
+treatment:"Specialist-directed antiparasitic and/or surgical management.",
+medications:"Antiparasitic therapy may be used.",
+prevention:"Deworming dogs where appropriate, food safety, and avoiding contamination with dog feces.",
+prognosis:"Variable.",
+complications:"Organ damage and complications from cysts.",
+risk:"Endemic areas and close dog-livestock cycles.",
+onehealth:"A major One Health parasite involving dogs, livestock, wildlife, and humans.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Cryptosporidiosis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Cryptosporidium species",
+classification:"Protozoal intestinal disease",
+hosts:"Humans, calves, lambs, foals, and many mammals",
+transmission:"Fecal-oral exposure, contaminated water, and animal contact.",
+incubation:"Usually several days.",
+symptoms:"Watery diarrhea, cramps, nausea, and dehydration.",
+diagnosis:"Stool testing.",
+treatment:"Hydration and supportive care; management differs for vulnerable patients.",
+medications:"Treatment depends on age and immune status.",
+prevention:"Water safety, hand hygiene, sanitation, and animal-facility hygiene.",
+prognosis:"Usually self-limited in healthy people.",
+complications:"Severe dehydration and prolonged illness in immunocompromised patients.",
+risk:"Contaminated recreational or drinking water and animal exposure.",
+onehealth:"Strong connection between livestock, water, and human health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Ringworm",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Dermatophyte fungi",
+classification:"Superficial fungal infection",
+hosts:"Humans, dogs, cats, livestock, and other animals",
+transmission:"Direct contact and contaminated objects or environments.",
+incubation:"Usually days to weeks.",
+symptoms:"Circular or irregular scaly skin lesions, itching, hair loss in animals.",
+diagnosis:"Skin examination, microscopy, culture, or molecular testing.",
+treatment:"Topical or systemic antifungal treatment depending on species and extent.",
+medications:"Antifungal medications are selected by medical or veterinary professionals.",
+prevention:"Cleaning environments, treating infected animals, and avoiding direct contact with lesions.",
+prognosis:"Usually good with treatment.",
+complications:"Spread to other body areas or animals.",
+risk:"Crowded animal environments and close contact.",
+onehealth:"Common example of a disease shared between humans and animals.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Mange",
+categories:["Veterinary","Zoonotic","Infectious"],
+pathogen:"Mite species including Sarcoptes and Demodex",
+classification:"Parasitic skin disease",
+hosts:"Dogs and many other mammals",
+transmission:"Depends on mite species; some spread by close contact.",
+incubation:"Variable.",
+symptoms:"Itching, hair loss, crusting, redness, and skin inflammation.",
+diagnosis:"Skin scraping, cytology, and clinical examination.",
+treatment:"Veterinary-directed antiparasitic therapy.",
+medications:"Veterinary antiparasitic medications vary by species and mite.",
+prevention:"Treat infected animals and manage close-contact environments.",
+prognosis:"Usually good with appropriate treatment.",
+complications:"Secondary skin infections and severe inflammation.",
+risk:"Close contact and certain immune conditions.",
+onehealth:"Some animal mites can temporarily affect humans.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Demodicosis",
+categories:["Veterinary"],
+pathogen:"Demodex mites",
+classification:"Parasitic skin disease",
+hosts:"Dogs and cats depending on mite species",
+transmission:"Some forms are associated with normal early-life transfer; disease reflects abnormal mite proliferation.",
+incubation:"Variable.",
+symptoms:"Hair loss, redness, scaling, and secondary infection.",
+diagnosis:"Deep skin scraping, cytology, or hair examination.",
+treatment:"Veterinary-directed antiparasitic therapy and treatment of underlying conditions.",
+medications:"Antiparasitic drugs selected by veterinarians.",
+prevention:"Responsible breeding and management of underlying immune problems.",
+prognosis:"Often good, but generalized disease may require prolonged treatment.",
+complications:"Secondary bacterial infection.",
+risk:"Young animals or immune dysfunction.",
+onehealth:"Primarily veterinary.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Asthma",
+categories:["Veterinary"],
+pathogen:"Not infectious; inflammatory airway disease",
+classification:"Chronic inflammatory respiratory disease",
+hosts:"Cats",
+transmission:"Not contagious.",
+incubation:"Not applicable.",
+symptoms:"Coughing, wheezing, rapid breathing, and respiratory distress.",
+diagnosis:"Clinical examination, imaging, and exclusion of other causes.",
+treatment:"Veterinary management to reduce airway inflammation and bronchoconstriction.",
+medications:"Veterinary-prescribed corticosteroids and bronchodilators may be used.",
+prevention:"Reducing respiratory irritants and environmental triggers.",
+prognosis:"Often manageable with long-term care.",
+complications:"Severe respiratory distress.",
+risk:"Environmental irritants and individual susceptibility.",
+onehealth:"Not a zoonotic disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Osteoarthritis",
+categories:["Human","Veterinary"],
+pathogen:"Noninfectious",
+classification:"Degenerative joint disease",
+hosts:"Humans and many animal species",
+transmission:"Not contagious.",
+incubation:"Gradual onset.",
+symptoms:"Joint pain, stiffness, reduced mobility, and decreased activity.",
+diagnosis:"Physical examination and imaging.",
+treatment:"Exercise/rehabilitation, weight management when appropriate, pain management, and veterinary or medical care.",
+medications:"Pain-control medications vary by species and patient.",
+prevention:"Healthy body condition, appropriate exercise, injury prevention.",
+prognosis:"Chronic but often manageable.",
+complications:"Mobility loss and chronic pain.",
+risk:"Age, joint injury, genetics, and excess mechanical stress.",
+onehealth:"Shows similarities between human and veterinary musculoskeletal medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Diabetes Mellitus",
+categories:["Human","Veterinary"],
+pathogen:"Noninfectious metabolic disease",
+classification:"Metabolic/endocrine disorder",
+hosts:"Humans, dogs, cats, and other animals",
+transmission:"Not contagious.",
+incubation:"Gradual or variable onset.",
+symptoms:"Increased thirst, increased urination, increased hunger, weight changes, and fatigue.",
+diagnosis:"Blood glucose and other laboratory tests.",
+treatment:"Lifestyle management and, depending on type/species, medication or insulin.",
+medications:"Insulin and other glucose-lowering medications may be used depending on patient.",
+prevention:"Healthy lifestyle can reduce risk of some forms.",
+prognosis:"Often manageable with appropriate long-term care.",
+complications:"Organ damage, ketoacidosis, neuropathy, and other complications.",
+risk:"Genetics, obesity in some populations, and other metabolic factors.",
+onehealth:"Important example of chronic disease shared across human and veterinary medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Epilepsy",
+categories:["Human","Veterinary","Neurology"],
+pathogen:"Noninfectious neurologic disorder",
+classification:"Seizure disorder",
+hosts:"Humans and many animal species",
+transmission:"Not contagious.",
+incubation:"Variable.",
+symptoms:"Recurrent seizures, altered awareness, abnormal movements, or behavioral changes.",
+diagnosis:"Neurologic examination, history, bloodwork, and sometimes imaging or EEG.",
+treatment:"Anti-seizure management and treatment of underlying causes.",
+medications:"Antiseizure medications are selected according to patient and species.",
+prevention:"Depends on cause; some forms cannot be prevented.",
+prognosis:"Variable.",
+complications:"Injury, prolonged seizures, and status epilepticus.",
+risk:"Genetic predisposition or underlying brain disease.",
+onehealth:"Veterinary neurology and human neurology share many diagnostic concepts.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Multiple Sclerosis",
+categories:["Human","Autoimmune","Neurology"],
+pathogen:"Autoimmune/inflammatory mechanism",
+classification:"Chronic central nervous system demyelinating disease",
+hosts:"Humans",
+transmission:"Not contagious.",
+incubation:"Not applicable.",
+symptoms:"Visual changes, weakness, numbness, balance problems, fatigue, and other neurologic symptoms.",
+diagnosis:"Neurologic assessment, MRI, and other testing.",
+treatment:"Disease-modifying therapy and management of symptoms.",
+medications:"Multiple disease-modifying therapies exist and are selected by specialists.",
+prevention:"No established guaranteed prevention.",
+prognosis:"Variable.",
+complications:"Progressive disability in some patients.",
+risk:"Genetic and environmental factors.",
+onehealth:"Primarily human medicine.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Systemic Lupus Erythematosus",
+categories:["Human","Autoimmune"],
+pathogen:"Autoimmune mechanism",
+classification:"Systemic autoimmune disease",
+hosts:"Humans",
+transmission:"Not contagious.",
+incubation:"Variable.",
+symptoms:"Fatigue, joint pain, skin changes, fever, and organ-specific symptoms.",
+diagnosis:"Clinical evaluation and laboratory testing.",
+treatment:"Immunomodulatory treatment and symptom management.",
+medications:"Medication selection depends on organ involvement and severity.",
+prevention:"No guaranteed prevention.",
+prognosis:"Variable.",
+complications:"Kidney, cardiovascular, neurologic, and other organ involvement.",
+risk:"Genetic and environmental factors.",
+onehealth:"Useful for studying autoimmune mechanisms in comparative medicine.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Hemophilia",
+categories:["Human","Genetic"],
+pathogen:"Inherited coagulation-factor deficiency",
+classification:"Genetic bleeding disorder",
+hosts:"Humans; analogous inherited disorders occur in animals.",
+transmission:"Inherited rather than contagious.",
+incubation:"Present from birth, though severity varies.",
+symptoms:"Easy bleeding, prolonged bleeding, bruising, and joint bleeding in severe forms.",
+diagnosis:"Coagulation testing and factor assays.",
+treatment:"Replacement of deficient clotting factor and specialized care.",
+medications:"Clotting-factor replacement and other therapies may be used.",
+prevention:"Genetic counseling and careful management.",
+prognosis:"Often manageable with modern treatment.",
+complications:"Joint damage and serious bleeding.",
+risk:"Inherited genetic variants.",
+onehealth:"Comparable inherited coagulation disorders occur in veterinary medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Cystic Fibrosis",
+categories:["Human","Genetic"],
+pathogen:"CFTR gene variants",
+classification:"Inherited multisystem genetic disorder",
+hosts:"Humans",
+transmission:"Inherited, not contagious.",
+incubation:"Present from birth.",
+symptoms:"Chronic respiratory disease, thick mucus, recurrent lung infections, and digestive problems.",
+diagnosis:"Newborn screening, sweat testing, and genetic testing.",
+treatment:"Airway clearance, infection management, nutritional support, and targeted therapies.",
+medications:"CFTR-modulator therapy may be used for eligible variants.",
+prevention:"Carrier screening and genetic counseling.",
+prognosis:"Improved substantially with modern treatment.",
+complications:"Chronic lung disease and pancreatic dysfunction.",
+risk:"Inherited CFTR variants.",
+onehealth:"Primarily human medicine.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Sickle Cell Disease",
+categories:["Human","Genetic"],
+pathogen:"HBB gene variants",
+classification:"Inherited hemoglobin disorder",
+hosts:"Humans",
+transmission:"Inherited, not contagious.",
+incubation:"Present from birth.",
+symptoms:"Anemia, pain crises, fatigue, jaundice, and organ complications.",
+diagnosis:"Blood testing and genetic testing.",
+treatment:"Pain management, prevention of complications, disease-modifying treatment, and transfusion in selected cases.",
+medications:"Hydroxyurea and other specialist-directed therapies may be used.",
+prevention:"Carrier screening and genetic counseling.",
+prognosis:"Variable and improved with appropriate care.",
+complications:"Stroke, organ damage, infections, and acute crises.",
+risk:"Inherited HBB variants.",
+onehealth:"Primarily human medicine.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Hemangiosarcoma",
+categories:["Veterinary"],
+pathogen:"Cancer",
+classification:"Malignant vascular tumor",
+hosts:"Especially dogs; can occur in other animals.",
+transmission:"Not contagious.",
+incubation:"Not applicable.",
+symptoms:"Weakness, pale gums, collapse, abdominal distension, or internal bleeding.",
+diagnosis:"Imaging, bloodwork, cytology/histopathology.",
+treatment:"Surgery and oncology-directed therapy depending on location and stage.",
+medications:"Chemotherapy may be considered by veterinary oncologists.",
+prevention:"No reliable prevention.",
+prognosis:"Often guarded to poor.",
+complications:"Internal hemorrhage and metastasis.",
+risk:"Age and breed-associated predisposition.",
+onehealth:"Important comparative oncology disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Osteosarcoma",
+categories:["Human","Veterinary"],
+pathogen:"Cancer",
+classification:"Malignant bone tumor",
+hosts:"Humans and dogs are important clinical populations.",
+transmission:"Not contagious.",
+incubation:"Not applicable.",
+symptoms:"Lameness, bone pain, swelling, and pathologic fractures.",
+diagnosis:"Imaging and biopsy.",
+treatment:"Surgery and chemotherapy depending on case.",
+medications:"Chemotherapy may be used under oncology supervision.",
+prevention:"No established prevention.",
+prognosis:"Depends on stage and treatment.",
+complications:"Metastasis, especially to lungs.",
+risk:"Age and genetic factors.",
+onehealth:"A major example of comparative oncology between humans and dogs.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Diabetes Mellitus",
+categories:["Veterinary"],
+pathogen:"Metabolic disease",
+classification:"Endocrine/metabolic disease",
+hosts:"Cats",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Increased thirst, urination, hunger, weight changes, and weakness.",
+diagnosis:"Blood and urine testing.",
+treatment:"Dietary management, weight management, insulin, and veterinary monitoring.",
+medications:"Insulin may be prescribed.",
+prevention:"Healthy body condition and appropriate nutrition.",
+prognosis:"Many cats can be managed successfully.",
+complications:"Diabetic ketoacidosis and neuropathy.",
+risk:"Obesity, age, and other metabolic factors.",
+onehealth:"Comparative metabolic disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Hyperthyroidism in Cats",
+categories:["Veterinary"],
+pathogen:"Endocrine disease",
+classification:"Feline endocrine disorder",
+hosts:"Cats",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Weight loss despite appetite, increased activity, vomiting, diarrhea, and rapid heart rate.",
+diagnosis:"Thyroid hormone testing and clinical assessment.",
+treatment:"Medication, radioactive iodine, diet, or surgery depending on case.",
+medications:"Antithyroid medication may be prescribed.",
+prevention:"No established prevention.",
+prognosis:"Often manageable and potentially curable with appropriate treatment.",
+complications:"Heart disease, hypertension, and kidney-related complications.",
+risk:"Older cats.",
+onehealth:"Useful comparative endocrine disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Chronic Kidney Disease",
+categories:["Veterinary"],
+pathogen:"Chronic renal disease",
+classification:"Progressive kidney disease",
+hosts:"Cats",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Increased thirst and urination, weight loss, poor appetite, vomiting, and dehydration.",
+diagnosis:"Bloodwork, urinalysis, blood pressure, and imaging.",
+treatment:"Dietary management, hydration, blood-pressure management, and treatment of complications.",
+medications:"Supportive medications depend on kidney function and complications.",
+prevention:"Regular veterinary monitoring and management of risk factors.",
+prognosis:"Variable and often chronic.",
+complications:"Anemia, hypertension, electrolyte abnormalities.",
+risk:"Age and underlying kidney injury.",
+onehealth:"Important comparative nephrology topic.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Canine Osteoarthritis",
+categories:["Veterinary"],
+pathogen:"Degenerative disease",
+classification:"Musculoskeletal disorder",
+hosts:"Dogs",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Stiffness, reduced activity, difficulty rising, and lameness.",
+diagnosis:"Orthopedic examination and imaging.",
+treatment:"Weight management, exercise modification, rehabilitation, and pain management.",
+medications:"Veterinary-prescribed analgesic and anti-inflammatory options.",
+prevention:"Healthy body condition and injury prevention.",
+prognosis:"Chronic but manageable.",
+complications:"Mobility loss and chronic pain.",
+risk:"Age, obesity, joint disease, and injury.",
+onehealth:"Comparable to human osteoarthritis.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Canine Atopic Dermatitis",
+categories:["Veterinary"],
+pathogen:"Allergic/inflammatory disease",
+classification:"Chronic allergic skin disease",
+hosts:"Dogs",
+transmission:"Not contagious.",
+incubation:"Variable.",
+symptoms:"Itching, redness, recurrent skin and ear infections.",
+diagnosis:"History, examination, and exclusion of other causes.",
+treatment:"Trigger management, skin care, and veterinary-directed anti-inflammatory or anti-itch therapy.",
+medications:"Several prescription options may be used depending on the dog.",
+prevention:"Allergen and parasite control where possible.",
+prognosis:"Chronic but manageable.",
+complications:"Secondary infections and chronic skin changes.",
+risk:"Genetic predisposition and environmental allergens.",
+onehealth:"Comparative dermatology.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Feline Upper Respiratory Infection",
+categories:["Veterinary","Infectious"],
+pathogen:"Commonly feline herpesvirus-1 and feline calicivirus, among others",
+classification:"Infectious respiratory disease complex",
+hosts:"Cats",
+transmission:"Respiratory and ocular/nasal secretions.",
+incubation:"Usually several days.",
+symptoms:"Sneezing, nasal discharge, conjunctivitis, fever, and reduced appetite.",
+diagnosis:"Usually clinical; PCR may be used.",
+treatment:"Supportive care and treatment of complications.",
+medications:"Supportive or targeted medications may be used by veterinarians.",
+prevention:"Vaccination, hygiene, isolation during outbreaks.",
+prognosis:"Usually good but severe disease can occur.",
+complications:"Pneumonia, chronic rhinitis, and ocular disease.",
+risk:"Shelters, catteries, multi-cat environments.",
+onehealth:"Important feline population-health disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Canine Gastric Dilatation-Volvulus",
+categories:["Veterinary"],
+pathogen:"Emergency gastrointestinal disorder",
+classification:"Noninfectious emergency",
+hosts:"Primarily dogs",
+transmission:"Not contagious.",
+incubation:"Acute onset.",
+symptoms:"Abdominal distension, retching without producing vomit, restlessness, weakness, and collapse.",
+diagnosis:"Emergency physical examination and imaging.",
+treatment:"Immediate emergency stabilization and surgical management.",
+medications:"Emergency supportive medications and fluid therapy are selected by veterinarians.",
+prevention:"Risk reduction strategies may include feeding management and preventive surgery in selected high-risk dogs.",
+prognosis:"Time-sensitive; rapid treatment is critical.",
+complications:"Shock, tissue death, heart rhythm abnormalities, and death.",
+risk:"Deep-chested breeds and other risk factors.",
+onehealth:"Comparative emergency medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Botulism",
+categories:["Human","Veterinary","Infectious","Neurology"],
+pathogen:"Botulinum neurotoxin produced by Clostridium botulinum",
+classification:"Neurotoxic bacterial disease",
+hosts:"Humans, birds, livestock, and other animals",
+transmission:"Ingestion of toxin or, in some forms, wound-associated toxin production.",
+incubation:"Usually hours to days.",
+symptoms:"Weakness, difficulty swallowing, blurred vision in humans, and progressive flaccid paralysis.",
+diagnosis:"Clinical assessment and specialized testing.",
+treatment:"Supportive care and antitoxin when indicated.",
+medications:"Antitoxin may be used in appropriate human or veterinary cases.",
+prevention:"Food safety and preventing access to spoiled materials.",
+prognosis:"Variable; respiratory failure can be fatal.",
+complications:"Respiratory paralysis.",
+risk:"Contaminated food or carcasses.",
+onehealth:"Environmental and food-safety disease affecting multiple species.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Listeriosis",
+categories:["Human","Veterinary","Zoonotic","Infectious","Neurology"],
+pathogen:"Listeria monocytogenes",
+classification:"Bacterial foodborne zoonosis",
+hosts:"Humans, ruminants, and other animals",
+transmission:"Contaminated food; animals may acquire infection from contaminated feed.",
+incubation:"Variable.",
+symptoms:"Fever, gastrointestinal illness, pregnancy complications, meningitis, and neurologic disease.",
+diagnosis:"Culture or molecular testing.",
+treatment:"Appropriate antibiotic therapy and supportive care.",
+medications:"Antibiotics are selected by clinicians or veterinarians.",
+prevention:"Food safety, sanitation, and feed management.",
+prognosis:"Variable; severe disease can be life-threatening.",
+complications:"Meningitis, sepsis, pregnancy loss, and death.",
+risk:"Pregnancy, older age, immune compromise, contaminated foods.",
+onehealth:"Strong food-animal-environment-human connection.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Campylobacteriosis in Dogs",
+categories:["Veterinary","Zoonotic","Infectious"],
+pathogen:"Campylobacter species",
+classification:"Bacterial enteric disease",
+hosts:"Dogs and other animals; humans can be infected.",
+transmission:"Fecal-oral exposure.",
+incubation:"Several days.",
+symptoms:"Diarrhea, abdominal discomfort, fever, and lethargy.",
+diagnosis:"Fecal laboratory testing.",
+treatment:"Supportive veterinary care and selected antimicrobial therapy.",
+medications:"Antibiotics are reserved for appropriate cases.",
+prevention:"Hygiene and sanitation.",
+prognosis:"Usually good.",
+complications:"Dehydration.",
+risk:"Young animals and contaminated environments.",
+onehealth:"Companion-animal and human gastrointestinal health can intersect.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Rabies in Wildlife",
+categories:["Veterinary","Zoonotic","Infectious","Neurology"],
+pathogen:"Rabies lyssavirus",
+classification:"Wildlife-associated viral encephalitis",
+hosts:"Bats, raccoons, skunks, foxes, and other mammals",
+transmission:"Saliva from infected animals, usually through bites.",
+incubation:"Variable.",
+symptoms:"Behavioral changes, aggression or unusual tameness, paralysis, and neurologic dysfunction.",
+diagnosis:"Specialized laboratory testing after appropriate public-health procedures.",
+treatment:"No reliable treatment once clinical disease develops.",
+medications:"Post-exposure prophylaxis is the key preventive medical intervention after possible human exposure.",
+prevention:"Wildlife vaccination programs, avoiding contact, and vaccinating pets.",
+prognosis:"Clinical disease is almost always fatal.",
+complications:"Progressive encephalitis and death.",
+risk:"Wildlife exposure.",
+onehealth:"A major wildlife-human-animal One Health disease.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Toxocariasis",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Toxocara species",
+classification:"Parasitic zoonosis",
+hosts:"Dogs, cats, and humans",
+transmission:"Ingestion of parasite eggs from contaminated soil or objects.",
+incubation:"Variable.",
+symptoms:"Often mild; can cause visceral or ocular larva migrans.",
+diagnosis:"Clinical assessment and serology.",
+treatment:"Antiparasitic therapy in selected cases.",
+medications:"Antiparasitic medication may be used by clinicians.",
+prevention:"Regular veterinary parasite control and hand hygiene.",
+prognosis:"Usually good but ocular disease can be serious.",
+complications:"Vision loss and organ inflammation.",
+risk:"Soil contamination and poor sanitation.",
+onehealth:"Important parasite connecting pets, soil, children, and public health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Hookworm Infection",
+categories:["Human","Veterinary","Zoonotic","Infectious"],
+pathogen:"Ancylostoma and related hookworms",
+classification:"Parasitic infection",
+hosts:"Dogs, cats, humans, and other mammals",
+transmission:"Skin penetration or ingestion depending on species.",
+incubation:"Variable.",
+symptoms:"Skin lesions, gastrointestinal symptoms, anemia, or intestinal disease.",
+diagnosis:"Stool testing and clinical evaluation.",
+treatment:"Antiparasitic treatment and management of anemia when needed.",
+medications:"Anthelmintic therapy varies by species and patient.",
+prevention:"Routine parasite control, sanitation, and avoiding contaminated soil.",
+prognosis:"Usually good with treatment.",
+complications:"Anemia and intestinal disease.",
+risk:"Contaminated soil and animal feces.",
+onehealth:"Important veterinary and public-health parasite.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Roundworm Infection",
+categories:["Veterinary","Zoonotic","Infectious"],
+pathogen:"Toxocara and related nematodes",
+classification:"Parasitic disease",
+hosts:"Dogs, cats, and other animals",
+transmission:"Ingestion of infective eggs or larvae.",
+incubation:"Variable.",
+symptoms:"Often asymptomatic; heavy infections can cause gastrointestinal or growth problems.",
+diagnosis:"Fecal examination.",
+treatment:"Veterinary-directed deworming.",
+medications:"Anthelmintic medications are selected by veterinarians.",
+prevention:"Routine parasite prevention and sanitation.",
+prognosis:"Usually good.",
+complications:"Intestinal obstruction in severe animal infections and zoonotic complications in humans.",
+risk:"Young animals and contaminated environments.",
+onehealth:"Pet parasite control is important for human and animal health.",
+zoonotic:true,
+vet:true
+},
+
+{
+name:"Equine Colic",
+categories:["Veterinary"],
+pathogen:"Multiple gastrointestinal causes",
+classification:"Clinical syndrome of abdominal pain",
+hosts:"Horses",
+transmission:"Not contagious.",
+incubation:"Acute or variable.",
+symptoms:"Pawing, rolling, sweating, flank watching, reduced appetite, and abnormal gut sounds.",
+diagnosis:"Emergency physical examination, rectal examination, ultrasound, and other testing.",
+treatment:"Cause-dependent emergency veterinary treatment.",
+medications:"Analgesics, fluids, and other therapies may be used by veterinarians.",
+prevention:"Appropriate feeding, hydration, parasite control, and routine management.",
+prognosis:"Highly variable depending on cause and speed of treatment.",
+complications:"Intestinal damage, shock, and death.",
+risk:"Dietary changes, impaction, displacement, and other gastrointestinal factors.",
+onehealth:"Comparative emergency and animal welfare topic.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Equine Cushing's Disease",
+categories:["Veterinary"],
+pathogen:"Pituitary pars intermedia dysfunction",
+classification:"Endocrine disorder",
+hosts:"Older horses and ponies",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Long hair, delayed shedding, increased thirst/urination, muscle loss, and recurrent infections.",
+diagnosis:"Endocrine testing and clinical evaluation.",
+treatment:"Long-term veterinary management.",
+medications:"Pergolide is commonly used under veterinary supervision.",
+prevention:"No reliable prevention.",
+prognosis:"Chronic but often manageable.",
+complications:"Laminitis and metabolic complications.",
+risk:"Age.",
+onehealth:"Comparative endocrine disease.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Equine Strangles",
+categories:["Veterinary","Infectious"],
+pathogen:"Streptococcus equi",
+classification:"Contagious bacterial respiratory disease",
+hosts:"Horses",
+transmission:"Respiratory and nasal secretions, contaminated equipment, and close contact.",
+incubation:"Usually several days.",
+symptoms:"Fever, nasal discharge, swollen lymph nodes, difficulty swallowing, and abscess formation.",
+diagnosis:"PCR or culture and clinical findings.",
+treatment:"Supportive care; antimicrobial decisions depend on disease stage and complications.",
+medications:"Veterinary-directed antimicrobial and supportive therapy.",
+prevention:"Isolation, hygiene, testing, and biosecurity.",
+prognosis:"Usually good, but complications can occur.",
+complications:"Abscesses, guttural pouch disease, and systemic complications.",
+risk:"Close horse contact.",
+onehealth:"Important equine infectious disease and biosecurity topic.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Chronic Wasting Disease",
+categories:["Veterinary","Infectious"],
+pathogen:"Prion",
+classification:"Transmissible spongiform encephalopathy",
+hosts:"Deer, elk, moose, and related cervids",
+transmission:"Environmental and animal-to-animal transmission of prions.",
+incubation:"Usually years.",
+symptoms:"Weight loss, abnormal behavior, loss of coordination, drooling, and progressive neurologic decline.",
+diagnosis:"Specialized postmortem testing.",
+treatment:"No effective treatment.",
+medications:"None known to cure the disease.",
+prevention:"Wildlife surveillance and management measures.",
+prognosis:"Fatal.",
+complications:"Progressive neurologic deterioration and death.",
+risk:"Exposure to contaminated environments or infected cervids.",
+onehealth:"Important wildlife-health and environmental disease; human risk remains an area of scientific/public-health monitoring.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Prion Disease",
+categories:["Human","Veterinary","Neurology"],
+pathogen:"Misfolded prion proteins",
+classification:"Transmissible spongiform encephalopathy",
+hosts:"Humans and multiple animal species depending on disease.",
+transmission:"Depends on specific prion disease.",
+incubation:"Often years or decades.",
+symptoms:"Progressive neurologic and cognitive dysfunction.",
+diagnosis:"Specialized neurologic and laboratory assessment.",
+treatment:"No curative treatment.",
+medications:"Supportive treatment may be used.",
+prevention:"Disease-specific public-health and animal-health control measures.",
+prognosis:"Generally fatal once symptomatic.",
+complications:"Severe neurologic deterioration.",
+risk:"Depends on specific disease.",
+onehealth:"Important comparative neurology and animal-health topic.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Alzheimer's Disease",
+categories:["Human","Neurology"],
+pathogen:"Neurodegenerative process",
+classification:"Progressive neurodegenerative disease",
+hosts:"Humans",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Memory loss, cognitive decline, behavioral changes, and loss of independence.",
+diagnosis:"Clinical evaluation, cognitive testing, imaging, and biomarkers when appropriate.",
+treatment:"Symptom management and disease-modifying approaches for selected patients.",
+medications:"Several medications may be used depending on diagnosis and eligibility.",
+prevention:"Risk reduction focuses on general brain and cardiovascular health.",
+prognosis:"Progressive.",
+complications:"Loss of cognitive and physical function.",
+risk:"Age, genetics, vascular and environmental factors.",
+onehealth:"Comparative neuroscience includes research into aging and cognition across species.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Parkinson's Disease",
+categories:["Human","Neurology"],
+pathogen:"Neurodegenerative process",
+classification:"Movement disorder",
+hosts:"Humans",
+transmission:"Not contagious.",
+incubation:"Gradual.",
+symptoms:"Tremor, rigidity, slowed movement, balance problems, and non-motor symptoms.",
+diagnosis:"Clinical neurologic assessment.",
+treatment:"Symptom management and rehabilitation.",
+medications:"Dopaminergic and other therapies may be used.",
+prevention:"No guaranteed prevention.",
+prognosis:"Chronic and progressive.",
+complications:"Falls, swallowing problems, and cognitive changes.",
+risk:"Age and genetic/environmental factors.",
+onehealth:"Comparative neuroscience research can use animal models.",
+zoonotic:false,
+vet:false
+},
+
+{
+name:"Meningitis",
+categories:["Human","Infectious","Neurology"],
+pathogen:"Can be caused by viruses, bacteria, fungi, or other organisms",
+classification:"Inflammation of the meninges",
+hosts:"Humans; analogous disease occurs in animals.",
+transmission:"Depends on the cause.",
+incubation:"Depends on the pathogen.",
+symptoms:"Headache, fever, neck stiffness, light sensitivity, confusion, and sometimes seizures.",
+diagnosis:"Clinical assessment and cerebrospinal-fluid testing.",
+treatment:"Urgent cause-specific treatment.",
+medications:"Antimicrobials or other therapy depends on cause.",
+prevention:"Vaccination for certain causes and infection-control measures.",
+prognosis:"Highly variable.",
+complications:"Brain injury, hearing loss, seizures, and death.",
+risk:"Age, exposure, immune status, and pathogen.",
+onehealth:"Comparative neurologic and infectious disease topic.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Pneumonia",
+categories:["Human","Veterinary","Infectious"],
+pathogen:"Bacteria, viruses, fungi, aspiration, or other causes",
+classification:"Inflammatory/infectious lung disease",
+hosts:"Humans and animals",
+transmission:"Depends on cause.",
+incubation:"Cause-dependent.",
+symptoms:"Cough, fever, breathing difficulty, fatigue, and abnormal lung sounds.",
+diagnosis:"Clinical examination, imaging, and laboratory testing.",
+treatment:"Cause-specific treatment and supportive care.",
+medications:"Antibiotics, antivirals, or other treatment may be used depending on cause.",
+prevention:"Vaccination where appropriate, hygiene, and management of underlying risk factors.",
+prognosis:"Variable.",
+complications:"Respiratory failure and sepsis.",
+risk:"Age, immune status, aspiration, and infectious exposure.",
+onehealth:"Occurs across human and veterinary medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Sepsis",
+categories:["Human","Veterinary","Infectious"],
+pathogen:"Usually triggered by infection",
+classification:"Life-threatening systemic response to infection",
+hosts:"Humans and animals",
+transmission:"Sepsis itself is not directly contagious.",
+incubation:"Depends on underlying infection.",
+symptoms:"Fever or low temperature, rapid heart rate, abnormal breathing, confusion, weakness, and low blood pressure.",
+diagnosis:"Clinical assessment and laboratory testing.",
+treatment:"Emergency source control, fluids, antimicrobials, and organ support.",
+medications:"Antimicrobial and supportive therapies are selected by medical or veterinary professionals.",
+prevention:"Preventing and promptly treating infections.",
+prognosis:"Potentially life-threatening.",
+complications:"Organ failure and shock.",
+risk:"Severe infection, immune compromise, and chronic disease.",
+onehealth:"Major emergency medicine concept shared across species.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Autoimmune Hemolytic Anemia",
+categories:["Human","Veterinary","Autoimmune"],
+pathogen:"Autoimmune process",
+classification:"Immune-mediated blood disorder",
+hosts:"Humans and animals",
+transmission:"Not contagious.",
+incubation:"Variable.",
+symptoms:"Weakness, pale or yellow gums/skin, fatigue, rapid heart rate, and exercise intolerance.",
+diagnosis:"CBC, blood smear, and immune testing.",
+treatment:"Immune suppression and treatment of underlying causes.",
+medications:"Corticosteroids and other immunomodulatory medications may be used.",
+prevention:"No guaranteed prevention.",
+prognosis:"Variable.",
+complications:"Severe anemia and blood clots.",
+risk:"Autoimmune predisposition and underlying disease.",
+onehealth:"Occurs in both human and veterinary medicine.",
+zoonotic:false,
+vet:true
+},
+
+{
+name:"Addison's Disease",
+categories:["Human","Veterinary","Autoimmune"],
+pathogen:"Adrenal insufficiency",
+classification:"Endocrine disease",
+hosts:"Humans and dogs; other animals can develop adrenal insufficiency.",
+transmission:"Not contagious.",
+incubation:"Gradual or acute crisis.",
+symptoms:"Weakness, vomiting, diarrhea, low blood pressure, dehydration, and electrolyte abnormalities.",
+diagnosis:"Blood chemistry and endocrine stimulation testing.",
+treatment:"Hormone replacement and emergency stabilization during crisis.",
+medications:"Glucocorticoid and mineralocorticoid replacement may be used.",
+prevention:"Depends on cause; often not preventable.",
+prognosis:"Usually manageable with lifelong treatment.",
+complications:"Addisonian crisis and shock.",
+risk:"Autoimmune disease and adrenal injury.",
+onehealth:"Classic comparative endocrine disease.",
+zoonotic:false,
+vet:true
+}
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentFilter="All";
+
+
+/* =========================================================
+   BASIC UI
+========================================================= */
+
+function scrollToId(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function clearSearch(){
+  document.getElementById("diseaseSearch").value="";
+  renderDiseases();
+}
+
+function setFilter(filter,button){
+  currentFilter=filter;
+
+  document.querySelectorAll(".filter").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  renderDiseases();
+}
+
+
+/* =========================================================
+   DISEASE LIBRARY
+========================================================= */
+
+function renderDiseases(){
+
+  const query=
+    document.getElementById("diseaseSearch").value
+    .toLowerCase()
+    .trim();
+
+  const grid=document.getElementById("diseaseGrid");
+
+  const filtered=D.filter(d=>{
+
+    const matchesFilter=
+      currentFilter==="All" ||
+      d.categories.includes(currentFilter);
+
+    const searchable=[
+      d.name,
+      ...(d.categories||[]),
+      d.pathogen,
+      d.hosts,
+      d.symptoms,
+      d.transmission,
+      d.classification
+    ].join(" ").toLowerCase();
+
+    return matchesFilter && searchable.includes(query);
+  });
+
+  if(!filtered.length){
+    grid.innerHTML=`
+      <div class="card">
+        <h3>No diseases found</h3>
+        <p class="muted">
+          Try another disease name, pathogen, symptom, animal,
+          or category.
+        </p>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML=filtered.map(d=>`
+
+    <div class="disease-card" onclick="openDisease('${escapeAttr(d.name)}')">
+
+      <h3>${d.name}</h3>
+
+      <div class="badges">
+        ${(d.categories||[]).slice(0,4).map(c=>`
+          <span class="badge
+            ${c==="Veterinary"?"vet":""}
+            ${c==="Zoonotic"?"zoo":""}
+            ${c==="Human"?"human":""}">
+            ${c}
+          </span>
+        `).join("")}
+      </div>
+
+      <p class="muted">
+        <strong>Cause:</strong> ${d.pathogen}
+      </p>
+
+      <p>
+        ${shortText(d.symptoms,125)}
+      </p>
+
+    </div>
+
+  `).join("");
+}
+
+
+function shortText(text,n){
+  if(!text) return "";
+  return text.length>n ? text.slice(0,n)+"…" : text;
+}
+
+
+function escapeAttr(text){
+  return text.replace(/'/g,"\\'");
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+function openDisease(name){
+
+  const d=D.find(x=>x.name===name);
+
+  if(!d) return;
+
+  const section=document.getElementById("profileSection");
+  const profile=document.getElementById("profile");
+
+  section.classList.add("show");
+
+  profile.innerHTML=`
+
+    <div class="profile-header">
+
+      <button class="secondary"
+        onclick="document.getElementById('profileSection').classList.remove('show')">
+        ← Close
+      </button>
+
+      <h2 style="margin-bottom:5px;">${d.name}</h2>
+
+      <div class="badges">
+        ${(d.categories||[]).map(c=>`
+          <span class="badge">${c}</span>
+        `).join("")}
+      </div>
+
+    </div>
+
+    <div class="profile-grid">
+
+      ${info("Classification",d.classification)}
+      ${info("Cause / Pathogen",d.pathogen)}
+      ${info("Hosts",d.hosts)}
+      ${info("Transmission",d.transmission)}
+      ${info("Incubation",d.incubation)}
+      ${info("Symptoms / Clinical Signs",d.symptoms)}
+      ${info("Diagnosis",d.diagnosis)}
+      ${info("Treatment",d.treatment)}
+      ${info("Medications",d.medications)}
+      ${info("Prevention",d.prevention)}
+      ${info("Prognosis",d.prognosis)}
+      ${info("Complications",d.complications)}
+      ${info("Risk Factors",d.risk)}
+      ${info("One Health",d.onehealth)}
+
+    </div>
+
+    <div class="notice" style="margin-top:18px;">
+      <strong>Zoonotic:</strong>
+      ${d.zoonotic ? "Yes — this disease has a human/animal connection." : "Not generally considered zoonotic."}
+      <br>
+      <strong>Veterinary relevance:</strong>
+      ${d.vet ? "Yes." : "Primarily human-health focused."}
+    </div>
+
+  `;
+
+  section.scrollIntoView({behavior:"smooth"});
+}
+
+
+function info(title,value){
+
+  return `
+    <div class="info-box">
+      <h4>${title}</h4>
+      <p>${value||"Information unavailable."}</p>
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   AI ASSISTANT
+========================================================= */
+
+function useQuestion(question){
+  document.getElementById("aiInput").value=question;
+  askAI();
+}
+
+
+function findDiseaseFromText(text){
+
+  const lower=text.toLowerCase();
+
+  return D.find(d=>{
+    return lower.includes(d.name.toLowerCase());
+  });
+}
+
+
+function findDiseasesInText(text){
+
+  const lower=text.toLowerCase();
+
+  return D.filter(d=>
+    lower.includes(d.name.toLowerCase())
+  );
+}
+
+
+function askAI(){
+
+  const input=document.getElementById("aiInput");
+  const answer=document.getElementById("aiAnswer");
+
+  const q=input.value.trim();
+
+  if(!q){
+    answer.innerHTML="Please enter a disease question.";
+    return;
+  }
+
+  const lower=q.toLowerCase();
+
+  const diseases=findDiseasesInText(q);
+
+  /* -----------------------------------------
+     COMPARE TWO DISEASES
+  ----------------------------------------- */
+
+  if(
+    diseases.length>=2 ||
+    lower.includes("compare") ||
+    lower.includes("difference between") ||
+    lower.includes("vs ")
+  ){
+
+    if(diseases.length>=2){
+
+      const a=diseases[0];
+      const b=diseases[1];
+
+      answer.innerHTML=`
+
+        <h3>🔬 ${a.name} vs ${b.name}</h3>
+
+        <div class="profile-grid">
+
+          ${compareBox("Classification",a.classification,b.classification)}
+
+          ${compareBox("Cause / Pathogen",a.pathogen,b.pathogen)}
+
+          ${compareBox("Hosts",a.hosts,b.hosts)}
+
+          ${compareBox("Transmission",a.transmission,b.transmission)}
+
+          ${compareBox("Symptoms",a.symptoms,b.symptoms)}
+
+          ${compareBox("Diagnosis",a.diagnosis,b.diagnosis)}
+
+          ${compareBox("Treatment",a.treatment,b.treatment)}
+
+          ${compareBox("Prevention",a.prevention,b.prevention)}
+
+        </div>
+
+      `;
+
+      return;
+    }
+  }
+
+
+  /* -----------------------------------------
+     NO DISEASE NAME
+  ----------------------------------------- */
+
+  if(!diseases.length){
+
+    if(
+      lower.includes("what is one health") ||
+      lower.includes("one health")
+    ){
+
+      answer.innerHTML=`
+        <h3>🌎 One Health</h3>
+        <p>
+          One Health is an approach that recognizes the connection
+          between human health, animal health, and environmental health.
+        </p>
+        <p>
+          Diseases such as rabies, leptospirosis, influenza,
+          salmonellosis, and Lyme disease demonstrate why
+          medical, veterinary, environmental, and public-health
+          professionals often need to work together.
+        </p>
+      `;
+      return;
+    }
+
+    if(lower.includes("what is a zoonotic") || lower.includes("zoonotic disease")){
+
+      answer.innerHTML=`
+        <h3>🐾 What is a zoonotic disease?</h3>
+        <p>
+          A zoonotic disease is an infection or disease that can be
+          transmitted between animals and humans under particular
+          circumstances.
+        </p>
+        <p>
+          Examples in this database include rabies, leptospirosis,
+          Lyme disease, salmonellosis, toxoplasmosis, and brucellosis.
+        </p>
+      `;
+      return;
+    }
+
+    if(
+      lower.includes("quiz") ||
+      lower.includes("test me") ||
+      lower.includes("question me")
+    ){
+
+      newQuiz();
+
+      answer.innerHTML=`
+        <h3>🧠 Quiz Mode</h3>
+        <p>
+          I created a disease question for you in the Quiz Lab below.
+        </p>
+      `;
+
+      scrollToId("quiz");
+      return;
+    }
+
+    answer.innerHTML=`
+      <h3>🤖 I can help with disease research!</h3>
+
+      <p>Try questions such as:</p>
+
+      <ul>
+        <li>What is rabies?</li>
+        <li>What causes leptospirosis?</li>
+        <li>What are the symptoms of parvovirus?</li>
+        <li>How is Lyme disease transmitted?</li>
+        <li>Can humans get toxoplasmosis?</li>
+        <li>What animals can get rabies?</li>
+        <li>How is FIP diagnosed?</li>
+        <li>How is diabetes treated?</li>
+        <li>Is ringworm contagious?</li>
+        <li>Why is leptospirosis a One Health disease?</li>
+        <li>Compare rabies and tetanus.</li>
+        <li>Give me an exam summary of tuberculosis.</li>
+        <li>Make me a quiz about influenza.</li>
+      </ul>
+    `;
+
+    return;
+  }
+
+
+  const d=diseases[0];
+
+  /* -----------------------------------------
+     INTENT DETECTION
+  ----------------------------------------- */
+
+  let topic="overview";
+
+  if(
+    lower.includes("what is") ||
+    lower.includes("define") ||
+    lower.includes("definition") ||
+    lower.includes("explain")
+  ) topic="overview";
+
+  if(
+    lower.includes("cause") ||
+    lower.includes("caused by") ||
+    lower.includes("pathogen") ||
+    lower.includes("organism")
+  ) topic="pathogen";
+
+  if(
+    lower.includes("classification") ||
+    lower.includes("type of disease") ||
+    lower.includes("category")
+  ) topic="classification";
+
+  if(
+    lower.includes("symptom") ||
+    lower.includes("sign") ||
+    lower.includes("clinical")
+  ) topic="symptoms";
+
+  if(
+    lower.includes("transmission") ||
+    lower.includes("spread") ||
+    lower.includes("contagious") ||
+    lower.includes("catch")
+  ) topic="transmission";
+
+  if(
+    lower.includes("incubation")
+  ) topic="incubation";
+
+  if(
+    lower.includes("diagnos") ||
+    lower.includes("test")
+  ) topic="diagnosis";
+
+  if(
+    lower.includes("treatment") ||
+    lower.includes("treat") ||
+    lower.includes("cure") ||
+    lower.includes("manage")
+  ) topic="treatment";
+
+  if(
+    lower.includes("medication") ||
+    lower.includes("medicine") ||
+    lower.includes("drug")
+  ) topic="medications";
+
+  if(
+    lower.includes("prevent") ||
+    lower.includes("prevention") ||
+    lower.includes("avoid")
+  ) topic="prevention";
+
+  if(
+    lower.includes("prognosis") ||
+    lower.includes("survival") ||
+    lower.includes("outlook")
+  ) topic="prognosis";
+
+  if(
+    lower.includes("complication") ||
+    lower.includes("dangerous")
+  ) topic="complications";
+
+  if(
+    lower.includes("risk") ||
+    lower.includes("risk factor")
+  ) topic="risk";
+
+  if(
+    lower.includes("animal") ||
+    lower.includes("host") ||
+    lower.includes("species")
+  ) topic="hosts";
+
+  if(
+    lower.includes("human") ||
+    lower.includes("people") ||
+    lower.includes("person")
+  ) topic="human";
+
+  if(
+    lower.includes("veterinary") ||
+    lower.includes("vet") ||
+    lower.includes("dog") ||
+    lower.includes("cat") ||
+    lower.includes("horse")
+  ) topic="veterinary";
+
+  if(
+    lower.includes("zoonotic") ||
+    lower.includes("zoonosis")
+  ) topic="zoonotic";
+
+  if(
+    lower.includes("one health")
+  ) topic="onehealth";
+
+  if(
+    lower.includes("study") ||
+    lower.includes("exam") ||
+    lower.includes("test") ||
+    lower.includes("school")
+  ) topic="study";
+
+  if(
+    lower.includes("short") ||
+    lower.includes("brief") ||
+    lower.includes("summarize")
+  ) topic="short";
+
+  if(
+    lower.includes("detailed") ||
+    lower.includes("detail") ||
+    lower.includes("deep")
+  ) topic="detailed";
+
+
+  /* -----------------------------------------
+     SPECIAL QUESTION TYPES
+  ----------------------------------------- */
+
+  if(
+    lower.includes("quiz") ||
+    lower.includes("test me") ||
+    lower.includes("question me")
+  ){
+
+    newQuiz();
+
+    answer.innerHTML=`
+      <h3>🧠 Quiz created!</h3>
+      <p>
+        I generated a question about <strong>${d.name}</strong>
+        in the Quiz Lab.
+      </p>
+    `;
+
+    scrollToId("quiz");
+    return;
+  }
+
+
+  if(
+    lower.includes("flashcard") ||
+    lower.includes("flash card")
+  ){
+
+    answer.innerHTML=`
+      <h3>🗂️ Flashcard: ${d.name}</h3>
+
+      <p>
+        <strong>Front:</strong>
+        What is ${d.name}?
+      </p>
+
+      <p>
+        <strong>Back:</strong>
+        ${d.classification}. It is caused by
+        ${d.pathogen}.
+      </p>
+
+      <p>
+        <strong>Key symptoms:</strong>
+        ${d.symptoms}
+      </p>
+    `;
+
+    return;
+  }
+
+
+  /* -----------------------------------------
+     ANSWER MAP
+  ----------------------------------------- */
+
+  const answers={
+
+    overview:`
+      <h3>🧬 What is ${d.name}?</h3>
+      <p>
+        <strong>${d.name}</strong> is classified as
+        <strong>${d.classification}</strong>.
+      </p>
+      <p>
+        Its main cause/pathogen is
+        <strong>${d.pathogen}</strong>.
+      </p>
+      <p>
+        <strong>Main symptoms/signs:</strong>
+        ${d.symptoms}
+      </p>
+    `,
+
+    pathogen:`
+      <h3>🦠 Cause / Pathogen</h3>
+      <p>
+        ${d.name} is associated with
+        <strong>${d.pathogen}</strong>.
+      </p>
+    `,
+
+    classification:`
+      <h3>📚 Classification</h3>
+      <p>${d.name} is classified as:</p>
+      <p><strong>${d.classification}</strong></p>
+    `,
+
+    symptoms:`
+      <h3>🩺 Symptoms / Clinical Signs</h3>
+      <p>${d.symptoms}</p>
+    `,
+
+    transmission:`
+      <h3>🔄 Transmission</h3>
+      <p>${d.transmission}</p>
+    `,
+
+    incubation:`
+      <h3>⏱️ Incubation</h3>
+      <p>${d.incubation}</p>
+    `,
+
+    diagnosis:`
+      <h3>🔬 Diagnosis</h3>
+      <p>${d.diagnosis}</p>
+    `,
+
+    treatment:`
+      <h3>💊 Treatment</h3>
+      <p>${d.treatment}</p>
+      <p class="muted">
+        Treatment decisions should be made by an appropriate
+        medical or veterinary professional.
+      </p>
+    `,
+
+    medications:`
+      <h3>💊 Medications</h3>
+      <p>${d.medications}</p>
+      <p class="muted">
+        No dosing information is provided here. Medication selection
+        depends on species, age, weight, diagnosis, and clinical status.
+      </p>
+    `,
+
+    prevention:`
+      <h3>🛡️ Prevention</h3>
+      <p>${d.prevention}</p>
+    `,
+
+    prognosis:`
+      <h3>📈 Prognosis</h3>
+      <p>${d.prognosis}</p>
+    `,
+
+    complications:`
+      <h3>⚠️ Complications</h3>
+      <p>${d.complications}</p>
+    `,
+
+    risk:`
+      <h3>⚠️ Risk Factors</h3>
+      <p>${d.risk}</p>
+    `,
+
+    hosts:`
+      <h3>🐾 Hosts / Species</h3>
+      <p>${d.hosts}</p>
+    `,
+
+    human:`
+      <h3>👤 Human Relevance</h3>
+      <p>
+        ${d.zoonotic
+          ? `${d.name} has a human-animal connection and is considered relevant to zoonotic or One Health discussions.`
+          : `${d.name} is not generally considered a zoonotic disease. Its human relevance depends on the specific disease context.`
+        }
+      </p>
+    `,
+
+    veterinary:`
+      <h3>🐾 Veterinary Relevance</h3>
+      <p>
+        ${d.vet
+          ? `${d.name} has veterinary relevance. ${d.hosts}`
+          : `${d.name} is primarily discussed in human medicine.`
+        }
+      </p>
+    `,
+
+    zoonotic:`
+      <h3>🐾↔️👤 Zoonotic Status</h3>
+      <p>
+        ${d.zoonotic
+          ? `<strong>Yes.</strong> ${d.onehealth}`
+          : `<strong>Not generally.</strong> ${d.onehealth}`
+        }
+      </p>
+    `,
+
+    onehealth:`
+      <h3>🌎 One Health</h3>
+      <p>${d.onehealth}</p>
+    `,
+
+    study:`
+      <h3>🎓 Exam-Style Study Summary</h3>
+
+      <p>
+        <strong>${d.name}</strong> is a
+        <strong>${d.classification}</strong>
+        associated with <strong>${d.pathogen}</strong>.
+      </p>
+
+      <p>
+        <strong>Transmission:</strong> ${d.transmission}
+      </p>
+
+      <p>
+        <strong>Main signs:</strong> ${d.symptoms}
+      </p>
+
+      <p>
+        <strong>Diagnosis:</strong> ${d.diagnosis}
+      </p>
+
+      <p>
+        <strong>Treatment:</strong> ${d.treatment}
+      </p>
+
+      <p>
+        <strong>Prevention:</strong> ${d.prevention}
+      </p>
+    `,
+
+    short:`
+      <h3>⚡ Short Explanation</h3>
+      <p>
+        <strong>${d.name}</strong> is a
+        ${d.classification}
+        caused by/associated with
+        ${d.pathogen}.
+      </p>
+      <p>${d.symptoms}</p>
+    `,
+
+    detailed:`
+      <h3>📖 Detailed Explanation: ${d.name}</h3>
+
+      <p><strong>Classification:</strong> ${d.classification}</p>
+
+      <p><strong>Cause:</strong> ${d.pathogen}</p>
+
+      <p><strong>Hosts:</strong> ${d.hosts}</p>
+
+      <p><strong>Transmission:</strong> ${d.transmission}</p>
+
+      <p><strong>Incubation:</strong> ${d.incubation}</p>
+
+      <p><strong>Symptoms:</strong> ${d.symptoms}</p>
+
+      <p><strong>Diagnosis:</strong> ${d.diagnosis}</p>
+
+      <p><strong>Treatment:</strong> ${d.treatment}</p>
+
+      <p><strong>Prevention:</strong> ${d.prevention}</p>
+
+      <p><strong>Prognosis:</strong> ${d.prognosis}</p>
+
+      <p><strong>Complications:</strong> ${d.complications}</p>
+
+      <p><strong>One Health:</strong> ${d.onehealth}</p>
+    `
+  };
+
+
+  answer.innerHTML=
+    answers[topic] ||
+    answers.overview;
+}
+
+
+function compareBox(title,a,b){
+
+  return `
+    <div class="info-box">
+      <h4>${title}</h4>
+      <p>
+        <strong>First:</strong><br>
+        ${a}
+      </p>
+      <p>
+        <strong>Second:</strong><br>
+        ${b}
+      </p>
+    </div>
+  `;
+}
+
+
+/* =========================================================
+   DISEASE DETECTIVE
+========================================================= */
+
+function runDetective(){
+
+  const host=document.getElementById("detectiveHost").value;
+  const clue=document.getElementById("detectiveClue").value;
+
+  let results=D.filter(d=>{
+
+    const text=(
+      d.hosts+" "+
+      d.symptoms+" "+
+      d.categories.join(" ")
+    ).toLowerCase();
+
+    let hostMatch=true;
+
+    if(host!=="any"){
+      hostMatch=text.includes(host);
+    }
+
+    let clueMatch=true;
+
+    const clueWords={
+      fever:["fever"],
+      neurologic:["neurologic","seizure","paralysis","encephalitis","ataxia"],
+      diarrhea:["diarrhea","gastrointestinal"],
+      respiratory:["respiratory","cough","pneumonia","breathing"],
+      jaundice:["jaundice","liver"],
+      skin:["skin","rash","lesion"],
+      vomiting:["vomiting"],
+      weakness:["weakness","lethargy"]
+    };
+
+    clueMatch=clueWords[clue]
+      .some(word=>text.includes(word));
+
+    return hostMatch && clueMatch;
+  });
+
+  results=results.slice(0,6);
+
+  const box=document.getElementById("detectiveResult");
+
+  if(!results.length){
+
+    box.innerHTML=`
+      <p>
+        No strong match found from the selected clues.
+        Try changing the patient type or main clue.
+      </p>
+    `;
+
+    return;
+  }
+
+  box.innerHTML=results.map(d=>`
+
+    <div
+      class="disease-card"
+      style="margin-bottom:9px;"
+      onclick="openDisease('${escapeAttr(d.name)}')"
+    >
+      <strong>${d.name}</strong>
+      <p class="muted">${shortText(d.symptoms,130)}</p>
+    </div>
+
+  `).join("");
+}
+
+
+/* =========================================================
+   QUIZ LAB
+========================================================= */
+
+let quizAnswer=null;
+
+function newQuiz(){
+
+  const d=D[Math.floor(Math.random()*D.length)];
+
+  const questionTypes=[
+    "cause",
+    "symptoms",
+    "transmission",
+    "classification",
+    "prevention"
+  ];
+
+  const type=
+    questionTypes[
+      Math.floor(Math.random()*questionTypes.length)
+    ];
+
+  let question="";
+  let correct="";
+  let choices=[];
+
+  if(type==="cause"){
+
+    question=`What is the main cause/pathogen associated with ${d.name}?`;
+    correct=d.pathogen;
+
+    choices=[
+      d.pathogen,
+      randomDisease().pathogen,
+      randomDisease().pathogen,
+      randomDisease().pathogen
+    ];
+  }
+
+  if(type==="symptoms"){
+
+    question=`Which description is associated with ${d.name}?`;
+    correct=d.symptoms;
+
+    choices=[
+      d.symptoms,
+      randomDisease().symptoms,
+      randomDisease().symptoms,
+      randomDisease().symptoms
+    ];
+  }
+
+  if(type==="transmission"){
+
+    question=`How is ${d.name} transmitted or acquired?`;
+    correct=d.transmission;
+
+    choices=[
+      d.transmission,
+      randomDisease().transmission,
+      randomDisease().transmission,
+      randomDisease().transmission
+    ];
+  }
+
+  if(type==="classification"){
+
+    question=`How is ${d.name} classified?`;
+    correct=d.classification;
+
+    choices=[
+      d.classification,
+      randomDisease().classification,
+      randomDisease().classification,
+      randomDisease().classification
+    ];
+  }
+
+  if(type==="prevention"){
+
+    question=`Which prevention strategy is associated with ${d.name}?`;
+    correct=d.prevention;
+
+    choices=[
+      d.prevention,
+      randomDisease().prevention,
+      randomDisease().prevention,
+      randomDisease().prevention
+    ];
+  }
+
+  choices=shuffle(
+    [...new Set(choices)]
+  );
+
+  quizAnswer=correct;
+
+  document.getElementById("quizContent").innerHTML=`
+
+    <div class="quiz-question">
+      ${question}
+    </div>
+
+    <div class="quiz-options">
+
+      ${choices.map(c=>`
+        <button onclick="checkQuiz(this)">
+          ${c}
+        </button>
+      `).join("")}
+
+    </div>
+
+    <p id="quizFeedback" class="muted"></p>
+
+  `;
+}
+
+
+function checkQuiz(button){
+
+  const feedback=document.getElementById("quizFeedback");
+
+  if(button.innerText.trim()===quizAnswer.trim()){
+
+    feedback.innerHTML=
+      "<strong style='color:#2f9e67;'>Correct! 🎉</strong>";
+
+  }else{
+
+    feedback.innerHTML=
+      `<strong style='color:#d9536f;'>
+        Not quite.
+      </strong>
+      <br>
+      Correct answer:
+      ${quizAnswer}`;
+  }
+}
+
+
+function randomDisease(){
+  return D[Math.floor(Math.random()*D.length)];
+}
+
+
+function shuffle(array){
+
+  for(let i=array.length-1;i>0;i--){
+
+    const j=Math.floor(Math.random()*(i+1));
+
+    [array[i],array[j]]=[array[j],array[i]];
+  }
+
+  return array;
+}
+
+
+/* =========================================================
+   OPTIONAL NLM SEARCH
+========================================================= */
+
+async function nlmSearch(term){
+
+  const url=
+    "https://clinicaltables.nlm.nih.gov/api/conditions/v3/search" +
+    "?terms="+encodeURIComponent(term)+
+    "&maxList=10";
+
+  try{
+
+    const response=await fetch(url);
+
+    if(!response.ok){
+      throw new Error("NLM request failed");
+    }
+
+    const data=await response.json();
+
+    return data;
+
+  }catch(error){
+
+    console.log("NLM search unavailable:",error);
+
+    return null;
+  }
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+function updateStats(){
+
+  document.getElementById("diseaseCount").textContent=D.length;
+
+  document.getElementById("zoonoticCount").textContent=
+    D.filter(d=>d.zoonotic).length;
+
+  document.getElementById("vetCount").textContent=
+    D.filter(d=>d.vet).length;
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateStats();
+renderDiseases();
+newQuiz();
+
+</script>
+
+</body>
+</html>
